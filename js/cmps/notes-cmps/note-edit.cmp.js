@@ -1,5 +1,5 @@
 'use strict';
-
+import eventBus from '../../event-bus.js'
 export default {
     template: `
     <section class="edit-container">
@@ -26,6 +26,7 @@ export default {
 
     methods: {
       closeModal(){
+          eventBus.$emit('update-note',this.selectedNote)
           this.$emit('close-modal')
       }
     },
