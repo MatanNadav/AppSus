@@ -1,3 +1,6 @@
+@import './notes-list.css';
+@import './notes-preview.css';
+
 
 body {
     background-color: lightblue;
