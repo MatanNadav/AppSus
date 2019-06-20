@@ -2,11 +2,13 @@
 
 export default {
     template: `
-    <div class="screen" >
+    <section class="edit-container">
         <section class="note-modal">
             <h1>note modal</h1>
         </section>
-    </div>   
+        <div class="screen" @click="closeModal">
+            </div>   
+        </section>
     `,
 
     data() {
@@ -21,11 +23,13 @@ export default {
     },
 
     methods: {
-
+      closeModal(){
+          this.$emit('close-modal')
+      }
     },
 
     created() {
         console.log('inside edit', this.selectedNote);
-
+        
     }
 }
