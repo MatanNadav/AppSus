@@ -2,11 +2,13 @@
 
 export default {
     template: `
-        <div class = "note-preview">
+    <div class = "note-preview">
             <p>{{note.text}}</p>
-            <img :src="note.img" />
-
+            <!-- <img :src="note.img" /> -->
+        <div class="note-command">
+            <input class="color-input" type="color"> 
         </div>
+    </div>
     `,
 
     data() {
@@ -15,7 +17,7 @@ export default {
         }
     },
 
-    props:['note'],
+    props: ['note'],
     computed: {
 
     },
