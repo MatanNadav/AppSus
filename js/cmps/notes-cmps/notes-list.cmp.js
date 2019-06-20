@@ -3,7 +3,7 @@ import notesPreview from './notes-preview.cmp.js';
 
 export default {
     template: `
-    <section class="grid-list-container">
+    <section class="list-container">
         <notes-preview :key="notes.id" v-for="note in notes" :note="note" >
         </notes-preview>
     </section>
@@ -25,7 +25,7 @@ export default {
     },
 
     created() {
-        console.log('created at notes-list');
+        console.log('created at notes-list', this.notes);
         
     },
     components: {

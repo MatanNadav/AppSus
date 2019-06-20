@@ -1,10 +1,10 @@
 
 
-.grid-list-container {
-    display: grid;
-    grid-template-rows: repeat(20, 1fr);
-    grid-template-columns: repeat(5, 1fr);
-    margin-top: 150px;
-    margin-left: 25px;
-    grid-gap: 20px;
+.list-container {
+    margin-top: 200px;
+    column-count: 4;
+    column-gap: 40px;
+    column-rule: 1px solid firebrick;
+    column-width: 250px;
+
 }

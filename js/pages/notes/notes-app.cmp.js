@@ -37,8 +37,8 @@ export default {
     created() {
         // console.log('inside created notes app');
         
-        this.notes = notesService.query().then(res => {
-            return res;
+        notesService.query().then(res => {
+            this.notes = res;
         })
         
 
