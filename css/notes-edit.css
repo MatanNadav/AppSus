@@ -1,0 +1,17 @@
+.note-modal{
+    z-index: 3;
+    background-color: white;
+    position: fixed;
+    width: 70vw;
+    height: 60vh;
+    top: 20vh;
+    left: 15vw;
+}
+
+.screen{
+    position: fixed;
+    z-index: 2;
+    background-color: red;
+    opacity: 0.3;
+    
+}
