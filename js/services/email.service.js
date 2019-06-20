@@ -3,12 +3,12 @@ import emailData from './data/mock-email-data.js';
 import { storageService } from './storage.service.js'
 
 const MAIL_KEY = 'emails'
-export const notesService = {
+export const emailService = {
     query,
     create,
     getById,
     remove,
-    
+
 }
 let emailsDB;
 function query(filter) {
@@ -23,20 +23,23 @@ function query(filter) {
     console.log(emailsDB);
     storageService.store(MAIL_KEY, emails);
     return Promise.resolve(emails);
-    
+
 }
 
-function create(txt, imgUrl) {
+function create(firstName,lastName,email) {
     if (!emailsDB) {
         query();
     }
-    emailsDB.push({
-        id: emailsDB[emailsDB.length - 1].id + 1,
-        text: txt,
-        date: new Date(),
-        time: new Date(),
-        img: imgUrl || null,
-    });
+    emailsDB.push(
+        {
+            id: emailsDB[emailsDB.length-1],
+            firstName ,
+            lastName,
+            email,
+            date: new Date(),
+        },
+
+    );
     storageService.store(MAIL_KEY, emailsDB);
 }
 
@@ -47,12 +50,12 @@ function _getIDXById(id) {
     return emailsDB.findIndex(email => id === email.id);
 }
 function getById(id) {
-   let  idx = _getIDXById(id);
+    let idx = _getIDXById(id);
     return emailsDB[idx];
 }
 
-function remove(id){
+function remove(id) {
     let idx = _getIDXById(id);
-    emailsDB.splice(idx,1);
+    emailsDB.splice(idx, 1);
 }
 

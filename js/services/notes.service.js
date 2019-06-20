@@ -1,6 +1,10 @@
 'use strict';
 import notesData from './data/mock-notes-data.js';
 import { storageService } from './storage.service.js'
+import eventBus from '../event-bus.js'
+eventBus.$on('update-note', ()=>{
+    storageService.store(NOTES_KEY,notesDB);
+})
 let notesPerPage = 25;
 // return notesDB.slice(page * notesPerPage, (page*1)*notesPerPage)
 export const notesService = {
