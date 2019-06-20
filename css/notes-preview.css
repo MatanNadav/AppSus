@@ -3,4 +3,7 @@
 .note-preview {
     border: 1px solid black;
     margin: 10px 10px;
+    width: 18vw;
+    height: 18vh;
+    overflow: hidden;
 }

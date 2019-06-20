@@ -1,6 +1,8 @@
 'use strict';
 import notesData from './data/mock-notes-data.js';
 import { storageService } from './storage.service.js'
+let notesPerPage = 25;
+// return notesDB.slice(page * notesPerPage, (page*1)*notesPerPage)
 export const notesService = {
     query,
     create,
