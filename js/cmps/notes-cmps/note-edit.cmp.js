@@ -2,11 +2,14 @@
 
 export default {
     template: `
-    <div class="screen" >
+    <section class="edit-container">
         <section class="note-modal">
-            <h1>note modal</h1>
+            <p>{{selectedNote.text}}</p>
+          <textarea class="edit-text" v-model="selectedNote.text" cols="30" rows="10"></textarea>
         </section>
-    </div>   
+        <div class="screen" @click="closeModal">
+            </div>   
+        </section>
     `,
 
     data() {
@@ -16,16 +19,19 @@ export default {
     },
 
     props: ['selectedNote'],
+    
     computed: {
 
     },
 
     methods: {
-
+      closeModal(){
+          this.$emit('close-modal')
+      }
     },
 
     created() {
         console.log('inside edit', this.selectedNote);
-
+        
     }
 }

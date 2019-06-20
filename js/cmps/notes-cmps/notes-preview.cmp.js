@@ -2,12 +2,12 @@
 
 export default {
     template: `
-    <div class = "note-preview">
+    <div class = "note-preview" @click="emitNote">
             <p>{{note.text}}</p>
             <!-- <img :src="note.img" /> -->
-        <div class="note-command">
-            <input class="color-input" type="color"> 
-        </div>
+            <div class="note-command">
+                 <input class="color-input" type="color"> 
+          </div>
     </div>
     `,
 
