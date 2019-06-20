@@ -1,5 +1,5 @@
 'use strict';
-import {notesService} from '../../services/'
+import { notesService } from '../../services/notes.service.js'
 
 export default {
     template: `
@@ -8,7 +8,7 @@ export default {
         <h1>Notes app</h1>
         <!-- <notes-filter @set-filter="setFilter"></notes-filter> -->
 
-        <notes-list > </notes-list>
+        <notes-list> </notes-list>
 
     </section>
         `,
@@ -19,7 +19,7 @@ export default {
         }
     },
 
-    props:[],
+    props: [],
     computed: {
 
     },
@@ -29,6 +29,13 @@ export default {
     },
 
     created() {
-        // this.notes = notesService.query()
+        this.notes = notesService.query()
+        console.log(this.notes);
+        
+    },
+
+    components: {
+
     }
+
 }
