@@ -8,7 +8,7 @@ export default {
             <!-- <img :src="note.img" /> -->
             <div class="note-command flex space-between" @click.stop="" >
             <label class="color-input">
-                <input @change="changeColor" id="note-color-input" type="color"/>
+                <input @change="changeColor" id="note-color-input" type="color" value="#eeeeee"/>
             </label>
             <button class="pinned-note"></button>
             <button class="share-note"></button>
