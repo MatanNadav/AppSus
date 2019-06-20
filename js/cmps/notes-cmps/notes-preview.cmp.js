@@ -2,12 +2,12 @@
 
 export default {
     template: `
-    <div class = "note-preview" @click="emitNote">
-            <p>{{note.text}}</p>
+    <div class = "note-preview flex wrap space-between" @click="emitNote">
+            <p>{{textRender}}</p>
             <!-- <img :src="note.img" /> -->
-            <div class="note-command">
-                 <input class="color-input" type="color"> 
-          </div>
+            <div class="note-command flex space-between" @click.stop="">
+                 <input class="color-input" type="color"><button class="btn">P</button><button class="btn">S</button>  <button class="remvove-note"></button>
+            </div>            
     </div>
     `,
 
@@ -19,7 +19,10 @@ export default {
 
     props: ['note'],
     computed: {
-
+        textRender() {
+            if (this.note.text.length > 50) return this.note.text.substring(0, 50) + '...'
+            else return this.note.text
+        }
     },
 
     methods: {
