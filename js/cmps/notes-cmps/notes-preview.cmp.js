@@ -3,7 +3,7 @@
 export default {
     template: `
         <div class = "note-preview">
-            <h2>{{note.text}}</h2>
+            <p>{{note.text}}</p>
             <img :src="note.img" />
         </div>
     `,
