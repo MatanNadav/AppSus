@@ -8,7 +8,7 @@ export default {
         <h1>Notes app</h1>
         <!-- <notes-filter @set-filter="setFilter"></notes-filter> -->
 
-        <notes-list> </notes-list>
+        <!-- <notes-list> </notes-list> -->
 
     </section>
         `,
@@ -29,9 +29,15 @@ export default {
     },
 
     created() {
-        this.notes = notesService.query()
-        console.log(this.notes);
+        // console.log('inside created notes app');
         
+        notesService.query().then(res => {
+            console.log('inside then:',res);
+            
+            return res;
+        })
+        // console.log(this.notes);
+
     },
 
     components: {
