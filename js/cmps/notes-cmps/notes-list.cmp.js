@@ -1,9 +1,11 @@
 'use strict';
+import notesPreview from './notes-preview.cmp.js';
 
 export default {
     template: `
-    <section>
-        <h1>notes list - TO WRITE</h1>
+    <section class="grid-list-container">
+        <notes-preview :key="notes.id" v-for="note in notes" :note="note" >
+        </notes-preview>
     </section>
     `,
 
@@ -13,7 +15,7 @@ export default {
         }
     },
 
-    props:[],
+    props:['notes'],
     computed: {
 
     },
@@ -23,6 +25,10 @@ export default {
     },
 
     created() {
-
+        console.log('created at notes-list');
+        
+    },
+    components: {
+        notesPreview
     }
 }

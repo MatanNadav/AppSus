@@ -1,5 +1,6 @@
 'use strict';
-import { notesService } from '../../services/notes.service.js'
+import { notesService } from '../../services/notes.service.js';
+import notesList from '../../cmps/notes-cmps/notes-list.cmp.js'
 
 export default {
     template: `
@@ -8,7 +9,7 @@ export default {
         <h1>Notes app</h1>
         <!-- <notes-filter @set-filter="setFilter"></notes-filter> -->
 
-        <notes-list> </notes-list>
+        <notes-list :notes="notes"> </notes-list>
 
     </section>
         `,
@@ -16,12 +17,17 @@ export default {
     data() {
         return {
             notes: null,
+            filter: null,
         }
     },
 
     props: [],
     computed: {
-
+        notesToShow() {
+            if (!this.filter) return this.books;
+            var filtered =  this.books.filter(book => book.title.includes(this.filter.txt))
+            return filtered            
+        },
     },
 
     methods: {
@@ -29,13 +35,17 @@ export default {
     },
 
     created() {
-        this.notes = notesService.query()
-        console.log(this.notes);
+        // console.log('inside created notes app');
         
+        this.notes = notesService.query().then(res => {
+            return res;
+        })
+        
+
     },
 
     components: {
-
+        notesList
     }
 
 }
