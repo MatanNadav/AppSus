@@ -1,5 +1,5 @@
 'use strict';
-import emailData from './data/mock-email-data.js';
+import {emailData , trashedEmails} from './data/mock-email-data.js'
 import { storageService } from './storage.service.js'
 
 const MAIL_KEY = 'emails'
@@ -11,6 +11,7 @@ export const emailService = {
 
 }
 let emailsDB;
+let trashDB = trashedEmails;
 function query(filter) {
     let emails;
     if (!emailsDB) {
@@ -56,6 +57,6 @@ function getById(id) {
 
 function remove(id) {
     let idx = _getIDXById(id);
-    emailsDB.splice(idx, 1);
+    let email = emailsDB.splice(idx, 1);
+    trashedEmails.unshift(email);
 }
-
