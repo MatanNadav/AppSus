@@ -20,6 +20,7 @@
     height: 1.7em;
 }
 
+/* [id^="note-color-input"] */
 #note-color-input {
     display: none;
 }
