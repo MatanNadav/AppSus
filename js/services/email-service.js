@@ -1,4 +1,4 @@
 'use strict';
-import emailData from './data/mock-data.js';
+import emailData from './data/mock-email-data.js';
 
 console.log(emailData);
