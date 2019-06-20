@@ -3,8 +3,7 @@
 export default {
     template: `
     <section class="email-preview">
-        <h1>{{email.subject}}</h1>
-        <p>{{email.body}}</p>
+        <p>{{email.subject}}<span>{{email.date}} {{email.time}}</span></p>
     </section>
     `,
 
