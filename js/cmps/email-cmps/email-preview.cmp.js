@@ -2,7 +2,10 @@
 
 export default {
     template: `
-
+    <section class="email-preview">
+        <h1>{{email.subject}}</h1>
+        <p>{{email.body}}</p>
+    </section>
     `,
 
     data() {
@@ -11,7 +14,7 @@ export default {
         }
     },
 
-    props:[],
+    props:['email'],
     computed: {
 
     },
