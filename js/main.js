@@ -1,5 +1,5 @@
 'use strict';
-
+import theRoutes from './routes.js'
 const myRouter = new VueRouter({ routes: theRoutes })
 
 new Vue({
