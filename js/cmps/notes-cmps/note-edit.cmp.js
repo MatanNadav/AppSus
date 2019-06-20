@@ -1,5 +1,6 @@
 'use strict';
 import eventBus from '../../event-bus.js'
+
 export default {
     template: `
     <section class="edit-container">

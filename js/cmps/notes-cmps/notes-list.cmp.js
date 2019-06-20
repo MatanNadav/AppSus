@@ -1,4 +1,5 @@
 'use strict';
+import eventBus from '../../event-bus.js'
 import notesPreview from './notes-preview.cmp.js';
 import notesEdit from './note-edit.cmp.js';
 

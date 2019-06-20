@@ -1,23 +1,23 @@
 
 
 .note-preview {
-    position: relative;
-    border: 1px solid #393e46;
+    /* position: relative; */
+    border: 1px dotted #393e46;
     margin: 10px 10px;
     width: 18vw;
     height: 18vh;
 }
 
 .note-command {
-    position: absolute;
+    /* position: absolute; */
     bottom: 0;
-    width: 13em;
+    width: 14.3em;
 }
 
 .color-input {
     background: url('../img/svg/svg/linealcolor/39-art.svg');
-    width: 2.1em;
-    height: 2.1em;
+    width: 1.7em;
+    height: 1.7em;
 }
 
 #note-color-input {
@@ -27,8 +27,9 @@
 .pinned-note {
     background: url('../img/svg/svg/lineal/18-save-the post.svg');
     background-color: #ffffff;
-    width: 2.5em;
-    height: 2.5em;
+    border: none;
+    width: 1.9em;
+    height: 1.9em;;
     background-position: left;
     background-repeat: no-repeat;
     background-size: cover;
@@ -37,9 +38,22 @@
 .remvove-note {
     background: url('../img/svg/svg/lineal/48-trash.svg');
     background-color: #ffffff;
-    width: 2.5em;
-    height: 2.5em;
+    border: none;
+    width: 1.9em;
+    height: 1.9em;
     background-position: left;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.share-note {
+    background: url('../img/svg/svg/lineal/23-globe.svg');
+    width: 1.9em;
+    height: 1.9em;
+    border: none;
+    background-color: #ffffff;
+}
+
+.share-note, .remvove-note, .pinned-note, .color-input:hover {
+    cursor: pointer;
 }
