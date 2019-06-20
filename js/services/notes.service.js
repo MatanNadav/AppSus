@@ -1,7 +1,9 @@
 'use strict';
 import notesData from './data/mock-notes-data.js';
 import storageService from './storage.service.js'
-
+export const notesService = {
+    query,
+}
 const NOTES_KEY = 'missNotes'
 console.log(notesData);
 function query(filter){
