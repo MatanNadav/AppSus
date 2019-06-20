@@ -6,7 +6,7 @@ export default {
             <p>{{textRender}}</p>
             <!-- <img :src="note.img" /> -->
             <div class="note-command flex space-between" @click.stop="">
-                 <input class="color-input" type="color"><button class="btn">P</button><button class="btn">S</button>  <button class="remvove-note"></button>
+            <label class="color-input" for="note-color-input"></label> <input id="note-color-input" type="color"/> <button class="pinned-note"></button><button class="color">S</button>  <button class="remvove-note"></button>
             </div>            
     </div>
     `,

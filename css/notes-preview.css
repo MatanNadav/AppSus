@@ -11,20 +11,34 @@
 .note-command {
     position: absolute;
     bottom: 0;
-    height: 3vh;
-    width: 18vw;
-    border: 1px solid black
+    width: 13em;
 }
 
 .color-input {
-    min-width: 15px;
-    width: 19px;
-    height: 19px;
-    border-radius: 28px;
+    background: url('../img/svg/svg/linealcolor/39-art.svg');
+    width: 2.1em;
+    height: 2.1em;
+}
+
+#note-color-input {
+    display: none;
+}
+
+.pinned-note {
+    background: url('../img/svg/svg/lineal/18-save-the post.svg');
+    background-color: #ffffff;
+    width: 2.5em;
+    height: 2.5em;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .remvove-note {
-    background: url('../img/svg/iconfinder___Cross_1904654.svg');
+    background: url('../img/svg/svg/lineal/48-trash.svg');
+    background-color: #ffffff;
+    width: 2.5em;
+    height: 2.5em;
     background-position: left;
     background-repeat: no-repeat;
     background-size: cover;
