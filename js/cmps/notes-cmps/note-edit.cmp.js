@@ -2,9 +2,11 @@
 
 export default {
     template: `
+    <div class="screen" >
         <section class="note-modal">
             <h1>note modal</h1>
         </section>
+    </div>   
     `,
 
     data() {
@@ -13,7 +15,7 @@ export default {
         }
     },
 
-    props:['selectedNote'],
+    props: ['selectedNote'],
     computed: {
 
     },
@@ -23,7 +25,7 @@ export default {
     },
 
     created() {
-        console.log('inside edit',this.selectedNote);
-        
+        console.log('inside edit', this.selectedNote);
+
     }
 }

@@ -7,10 +7,11 @@ export default {
     <section class="notes-app">
 
         <h1>Notes app</h1>
-        <!-- <notes-filter @set-filter="setFilter"></notes-filter> -->
-
+        <notes-filter @set-filter="setFilter"></notes-filter>
+        
         <notes-list :notes="notes"> </notes-list>
-
+        
+    <
     </section>
         `,
 
@@ -31,7 +32,9 @@ export default {
     },
 
     methods: {
-
+        setFilter(filter) {
+            this.filter = filter; 
+        }
     },
 
     created() {
