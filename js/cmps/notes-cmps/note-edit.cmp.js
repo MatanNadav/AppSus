@@ -4,7 +4,8 @@ export default {
     template: `
     <section class="edit-container">
         <section class="note-modal">
-            <h1>note modal</h1>
+            <p>{{selectedNote.text}}</p>
+          <textarea class="edit-text" v-model="selectedNote.text" cols="30" rows="10"></textarea>
         </section>
         <div class="screen" @click="closeModal">
             </div>   
@@ -18,6 +19,7 @@ export default {
     },
 
     props: ['selectedNote'],
+    
     computed: {
 
     },

@@ -5,5 +5,7 @@
     margin: 10px 10px;
     width: 18vw;
     height: 18vh;
+    display: flex;
+    flex-wrap: wrap;
     overflow: hidden;
 }

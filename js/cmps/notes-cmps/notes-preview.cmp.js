@@ -4,7 +4,7 @@ export default {
     template: `
         <div class = "note-preview" @click="emitNote">
             <p>{{note.text}}</p>
-            <img :src="note.img" />
+            <!-- <img :src="note.img" /> -->
 
         </div>
     `,
