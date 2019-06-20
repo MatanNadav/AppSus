@@ -2,9 +2,7 @@
 
 export default {
     template: `
-    <section>
-        <h1>notes list - TO WRITE</h1>
-    </section>
+
     `,
 
     data() {
