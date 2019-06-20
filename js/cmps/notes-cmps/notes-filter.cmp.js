@@ -2,7 +2,7 @@
 
 export default {
     template: `
-        <section class="book-filter">
+        <section class="note-filter">
             <input placeholder="Filter" type="text" v-model="filterBy.txt" @input="emitFilter" />
         </section>
     `,
