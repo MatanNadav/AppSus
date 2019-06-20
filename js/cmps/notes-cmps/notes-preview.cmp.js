@@ -14,7 +14,7 @@ export default {
 
     data() {
         return {
-            style: null
+            style: null,
         }
     },
 
@@ -35,8 +35,7 @@ export default {
         },
         changeColor(ev) {
             console.log('inside change color',ev.target.value);
-            
-           return this.style = `background-color = "${ev.target.value}"` ;
+            this.style = `background-color:${ev.target.value}`;
             
         }
     },
