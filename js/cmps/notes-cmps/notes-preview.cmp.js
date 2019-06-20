@@ -3,7 +3,7 @@ import eventBus from '../../event-bus.js';
 
 export default {
     template: `
-    <div  class = "note-preview flex wrap space-between" @click="emitNote('show-note')" >
+    <div  class = "note-preview flex wrap space-between" @click="emitNote('show-note')" :style="note.bgcColor" >
             <p>{{textRender}}</p>
             <!-- <img :src="note.img" /> -->
             <div class="note-command flex space-between" @click.stop="" >
@@ -26,11 +26,7 @@ export default {
     props: ['note'],
 
     computed: {
-        changeColor() {
-            console.log('inside change color', this.note.bgColor);
-            
-            //  return this.note.bgColor = ev.target.value
-        },
+       
         textRender() {
             if (this.note.text.length > 35) return this.note.text.substring(0, 35) + '...'
             else return this.note.text
@@ -43,6 +39,10 @@ export default {
         },
         emitNoteOnBus(identfier) {
             eventBus.$emit(identfier, this.note);
+        },
+        changeColor(ev) {
+            console.log('inside changing color', ev);
+            this.note.bgColor = ev.target.value
         },
     },
 
