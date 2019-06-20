@@ -6,13 +6,26 @@
     margin: 10px 10px;
     width: 18vw;
     height: 18vh;
-    display: flex;
-    flex-wrap: wrap;
-    overflow: hidden;
+}
+
+.note-command {
+    position: absolute;
+    bottom: 0;
+    height: 3vh;
+    width: 18vw;
+    border: 1px solid black
 }
 
 .color-input {
     min-width: 15px;
-    width: 20px;
+    width: 19px;
+    height: 19px;
     border-radius: 28px;
+}
+
+.remvove-note {
+    background: url('../img/svg/iconfinder___Cross_1904654.svg');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

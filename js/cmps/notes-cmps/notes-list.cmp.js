@@ -29,7 +29,6 @@ export default {
     },
 
     created() {
-        console.log('created at notes-list', this.notes);
         
     },
     components: {
