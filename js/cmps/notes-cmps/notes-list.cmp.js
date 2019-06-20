@@ -1,27 +1,31 @@
 'use strict';
 import notesPreview from './notes-preview.cmp.js';
+import notesEdit from './note-edit.cmp.js';
 
 export default {
     template: `
     <section class="list-container">
-        <notes-preview :key="notes.id" v-for="note in notes" :note="note" >
+        <notes-preview @show-note="onSelectedNote" :key="notes.id" v-for="note in notes" :note="note" >
         </notes-preview>
+        <notes-edit :selectedNote="selectedNote" v-if="selectedNote"></notes-edit>
     </section>
     `,
 
     data() {
         return {
-
+            selectedNote: null
         }
     },
 
     props:['notes'],
     computed: {
-
+      
     },
 
     methods: {
-
+        onSelectedNote(note) {
+            this.selectedNote = note;
+        }
     },
 
     created() {
@@ -29,6 +33,7 @@ export default {
         
     },
     components: {
-        notesPreview
+        notesPreview,
+        notesEdit
     }
 }

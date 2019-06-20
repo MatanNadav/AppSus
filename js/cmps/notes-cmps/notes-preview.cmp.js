@@ -2,9 +2,10 @@
 
 export default {
     template: `
-        <div class = "note-preview">
+        <div  class = "note-preview" @click="emitNote">
             <h2>{{note.text}}</h2>
             <img :src="note.img" />
+
         </div>
     `,
 
@@ -20,7 +21,9 @@ export default {
     },
 
     methods: {
-
+        emitNote() {
+            this.$emit('show-note', this.note)
+        }
     },
 
     created() {
