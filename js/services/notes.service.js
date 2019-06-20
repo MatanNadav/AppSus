@@ -1,11 +1,11 @@
 'use strict';
 import notesData from './data/mock-notes-data.js';
-import storageService from './storage.service.js'
+import {storageService} from './storage.service.js'
 export const notesService = {
     query,
 }
 const NOTES_KEY = 'missNotes'
-console.log(notesData);
+// console.log(notesData);
 function query(filter){
      let notes =  storageService.load(NOTES_KEY);
      if(notes){
