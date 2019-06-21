@@ -3,58 +3,45 @@ import eventBus from '../../event-bus.js';
 
 export default {
     template: `
-        <li class="note-container" @click="emitNote('show-note')" :style="noteStyle" >
-            <a class="note-link" href="#">
-                <h2></h2>
+        <li class="note-container" @click="emitNote('show-note')" >
+            <a class="note-link" :style="note.bgColor" :class="{important: isImportant}">
                 <p>{{textRender}}</p>
                 <div class="note-command flex space-between" @click.stop=""> 
-                    <label class="color-input">
-                        <input @change="changeColor" id="note-color-input" type="color" value="#eeeeee"/>
+                    <label class="color-input" title="Color">
+                        <input @change="changeColor" id="note-color-input" type="color"/>
                     </label>
-                    <button class="pinned-note"></button>
-                    <button class="share-note"></button>
-                    <button class="remvove-note" @click="emitNoteOnBus('remove-note')"></button>
+                    <button class="pinned-note" @click = "tagNote"title="Important"></button>
+                    <button class="share-note" title="Share"></button>
+                    <button class="remvove-note" @click="emitNoteOnBus('remove-note')" title="Remove"></button>
                 </div>
             </a>
         </li>
 
-
-
-
-    <!-- <div  class = "note-preview flex wrap space-between" @click="emitNote('show-note')" :style="noteStyle" >
-            <p>{{textRender}}</p>
-            <div class="note-command flex space-between" @click.stop="" >
-            <label class="color-input">
-                <input @change="changeColor" id="note-color-input" type="color" value="#eeeeee"/>
-            </label>
-            <button class="pinned-note"></button>
-            <button class="share-note"></button>
-            <button class="remvove-note" @click="emitNoteOnBus('remove-note')"></button>
-            </div>  
-    </div> -->
     `,
 
     data() {
         return {
-            noteStyle: {
-                backgroundColor: null,
-            }
+           isImportant: false
         }
     },
     props: ['note'],
 
     computed: {
         textRender() {
-            if (this.note.text.length > 35) return this.note.text.substring(0, 35) + '...'
+            if (this.note.text.length > 55) return this.note.text.substring(0, 35) + '...'
             else return this.note.text
         }
     },
 
     methods: {
         changeColor(ev) {
-            console.log('inside change color', this.noteStyle.backgroundColor);
-
-            return this.noteStyle.backgroundColor = ev.target.value
+            console.log('inside change color',this.note.bgColor);
+            this.note.bgColor = "background-color:"+ev.target.value
+            this.emitNoteOnBus('update-note')
+            return this.note.bgColor
+        },
+        pinNote() {
+            // this.emitNoteOnBus('pin-note')
         },
         emitNote(identfier) {
             this.$emit(identfier, this.note)
@@ -62,10 +49,9 @@ export default {
         emitNoteOnBus(identfier) {
             eventBus.$emit(identfier, this.note);
         },
-        changeColor(ev) {
-            console.log('inside changing color', ev);
-            this.noteStyle.backgroundColor = ev.target.value
-        },
+        tagNote() {
+            this.isImportant = !this.isImportant;
+        }
     },
 
     created() {

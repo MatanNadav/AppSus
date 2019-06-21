@@ -5,6 +5,7 @@ import eventBus from '../event-bus.js'
 eventBus.$on('update-note', ()=>{
     storageService.store(NOTES_KEY,notesDB);
 })
+
 let notesPerPage = 25;
 // return notesDB.slice(page * notesPerPage, (page*1)*notesPerPage)
 export const notesService = {
@@ -12,7 +13,8 @@ export const notesService = {
     create,
     getById,
     remove,
-    update
+    update,
+    save
 
 }
 const NOTES_KEY = 'missNotes';
@@ -27,12 +29,24 @@ function query(filter) {
         notes = notesData.slice();
     }
     notesDB = notes;
-    storageService.store(NOTES_KEY, notes);
+    save(NOTES_KEY, notes)
     if(!filter) return Promise.resolve(notes);
     else {
         return notes.filter(note => note.text.includes(filter.txt));
     }
 
+}
+
+function save(key = NOTES_KEY, value = notes) {
+    storageService.store(key, value);
+}
+
+function pinNote(noteToPin) {
+    // let idx = notesDB.findIndex(note => note.id === noteToPin.id)
+    // let pinnedNote = notesDB.splice(idx, 1)
+    // notesDB.unshift(pinnedNote)
+    // console.log('inside service note to pin', notesDB);
+    // query()
 }
 
 function create(txt, imgUrl) {
