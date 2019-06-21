@@ -14,7 +14,7 @@ export const emailService = {
 }
 let emailsDB;
 let trashDB = trashedEmails;
-function query(filter) {
+function query(filter,page,emailsPerPage,pageNumber) {
     let emails;
     if (!emailsDB) {
         emails = storageService.load(MAIL_KEY);
@@ -25,12 +25,24 @@ function query(filter) {
         emails = emailData.slice();
     }
      emailsDB = emails;
-    console.log(emailsDB);
-    storageService.store(MAIL_KEY, emails);
-    if (filter) {
-        return Promise.resolve(emailsDB.filter(email => email.subject.toLowerCase().includes(filter)));
+     storageService.store(MAIL_KEY, emails);
+     if (filter) {
+         emails = emailsDB.filter(email => email.subject.toLowerCase().includes(filter));
+        }
+        switch(page){
+            case 'inbox':
+            return Promise.resolve(emails.slice(emailsPerPage*pageNumber, emailsPerPage*(pageNumber+1)));
+        case 'starred': 
+        let starredEmailsToShow = [];
+        for(let i = 0 ; i <emails.length || starredEmailsToShow.length < emailsPerPage ; i++){
+            if(emails[i].isStarred) starredEmailsToShow.push(emails[i]);
+        }
+        console.log(starredEmailsToShow);
+        return Promise.resolve(starredEmailsToShow);
+        case 'trash': 
+        return Promise.resolve(trashDB.slice(emailsPerPage*pageNumber, emailsPerPage*(pageNumber+1)));
     }
-    return Promise.resolve(emails);
+    return Promise.resolve(emailsDB);
 
 }
 
@@ -65,7 +77,8 @@ function getById(id) {
 function remove(id) {
     let idx = _getIDXById(id);
     let email = emailsDB.splice(idx, 1);
-    trashedEmails.unshift(email);
+    console.log(email)
+    trashedEmails.unshift(...email);
     storageService.store(MAIL_KEY,emailsDB)
     console.log(trashedEmails);
 }
