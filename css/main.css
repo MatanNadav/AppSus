@@ -1,5 +1,4 @@
 
-
 @import './notes-list.css';
 @import './notes-preview.css';
 @import './notes-edit.css';
@@ -14,7 +13,8 @@
 
 
 body {
-    background-color: #eeeeee;
+    background-color: #393e46;
+    background: linear-gradient(70deg, #d65a31,#393e46);
     font-family: 'Muli'
 }
 
@@ -28,10 +28,6 @@ body {
 
 
 /* Helpers */
-
-
-
-
 
 .flex {
     display: flex;

@@ -45,7 +45,7 @@ export default {
         eventBus.$on('remove-note', (note) => {
             notesService.remove(note.id)
             
-        }) 
+        })
 
     },
     components: {

@@ -52,22 +52,17 @@
 
 /* Note Style  */
 
-body {
+/* body { */
     /* font-family:arial,sans-serif; */
-    font-size:100%;
-    margin:1em;
-    background:#666;
-    color:#fff;
-}
+    /* font-size:100%;
+    margin:1em; */
+    /* background:#666; */
+    /* color:#fff; */
+/* } */
 
 *{
     margin:0;
     padding:0;
-}
-
-h2,p {
-    font-size:100%;
-    font-weight:normal;
 }
 
 .preview-container ,.note-container {
@@ -92,19 +87,16 @@ h2,p {
 }
 
 .preview-container .note-container {
-    margin:1em;
+    margin:3em 3em;
     float:left;
 }
 
-.preview-container .note-container h2 {
-    font-size:140%;
-    font-weight:bold;
+.preview-container .note-container {
     padding-bottom:10px;
 }
 
 .preview-container .note-container p {
-    font-family:"Reenie Beanie",arial,sans-serif;
-    font-size:180%;
+    font-size:130%;
 }
 
 .preview-container .note-container .note-link {
@@ -115,6 +107,7 @@ h2,p {
     transform:rotate(4deg);
     position:relative;
     top:5px;
+    margin-top: 4em;
     background:#cfc;
 }
 
@@ -136,11 +129,15 @@ h2,p {
     box-shadow:10px 10px 7px rgba(0,0,0,.7);
     transform: scale(1.25);
     position:relative;
-    z-index:5;
+    z-index:1;
 }
-  ol{text-align:center;}
-  ol .note-container{display:inline;padding-right:1em;}
-  ol .note-container .note-link{color:#fff;}
+
+.important {
+    border: 5px dotted orangered;
+}
+/* ol{text-align:center;}  */
+  /* ol .note-container{display:inline;padding-right:1em;} */
+  /* ol .note-container .note-link{color:#fff;}  */
 
 /* Note Function  */
 
