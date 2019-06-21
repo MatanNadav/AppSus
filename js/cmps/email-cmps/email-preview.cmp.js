@@ -1,14 +1,14 @@
 'use strict';
 
-import { emailService } from "../../services/email.service.js";
+import eventBus from "../../event-bus.js";
 
 export default {
     template: `
     <section class="email-preview" :class="{opened : email.isRead}" @click="goToEmailDetails">
-      <button @click.stop="onEmailDelete">x</button>  <p>{{email.subject}}<span>{{email.date}} {{email.time}}</span></p>
+     <button @click.stop="emitToggleRead">u</button> <button @click.stop="onEmailDelete">x</button>  <p>{{email.subject}}<span>{{email.date}} {{email.time}}</span></p>
     </section>
     `,
-
+    
     data() {
         return {
 
@@ -26,7 +26,10 @@ export default {
        this.$router.push(emailUrl);
     },
     onEmailDelete(){
-        emailService.remove(this.email.id)
+        eventBus.$emit('delete-email',this.email.id)
+    },
+    emitToggleRead(){
+      eventBus.$emit('toggle-read',this.email.id);
     }
     },
 

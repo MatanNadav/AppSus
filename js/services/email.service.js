@@ -2,8 +2,6 @@
 import { emailData, trashedEmails } from './data/mock-email-data.js'
 import { storageService } from './storage.service.js'
 
-
-
 const MAIL_KEY = 'emails'
 
 export const emailService = {
