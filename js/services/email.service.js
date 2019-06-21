@@ -59,4 +59,5 @@ function remove(id) {
     let idx = _getIDXById(id);
     let email = emailsDB.splice(idx, 1);
     trashedEmails.unshift(email);
+    console.log(trashedEmails);
 }
