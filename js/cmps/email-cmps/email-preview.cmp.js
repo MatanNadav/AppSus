@@ -4,7 +4,7 @@ import { emailService } from "../../services/email.service.js";
 
 export default {
     template: `
-    <section class="email-preview" @click="goToEmailDetails">
+    <section class="email-preview" :class="{opened : email.isRead}" @click="goToEmailDetails">
       <button @click.stop="onEmailDelete">x</button>  <p>{{email.subject}}<span>{{email.date}} {{email.time}}</span></p>
     </section>
     `,
