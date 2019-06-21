@@ -6,8 +6,10 @@ import notesEdit from './note-edit.cmp.js';
 export default {
     template: `
     <section class="list-container">
+    <ul class="preview-container">
         <notes-preview @show-note="onSelectedNote" :key="notes.id" v-for="note in notes" :note="note" >
         </notes-preview>
+    </ul>
         <notes-edit @close-modal="selectedNote=null" :selectedNote="selectedNote" v-if="selectedNote"></notes-edit>
     </section>
     `,

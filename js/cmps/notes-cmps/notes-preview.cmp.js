@@ -3,9 +3,26 @@ import eventBus from '../../event-bus.js';
 
 export default {
     template: `
-    <div  class = "note-preview flex wrap space-between" @click="emitNote('show-note')" :style="noteStyle" >
+        <li class="note-container" @click="emitNote('show-note')" :style="noteStyle" >
+            <a class="note-link" href="#">
+                <h2></h2>
+                <p>{{textRender}}</p>
+                <div class="note-command flex space-between" @click.stop=""> 
+                    <label class="color-input">
+                        <input @change="changeColor" id="note-color-input" type="color" value="#eeeeee"/>
+                    </label>
+                    <button class="pinned-note"></button>
+                    <button class="share-note"></button>
+                    <button class="remvove-note" @click="emitNoteOnBus('remove-note')"></button>
+                </div>
+            </a>
+        </li>
+
+
+
+
+    <!-- <div  class = "note-preview flex wrap space-between" @click="emitNote('show-note')" :style="noteStyle" >
             <p>{{textRender}}</p>
-            <!-- <img :src="note.img" /> -->
             <div class="note-command flex space-between" @click.stop="" >
             <label class="color-input">
                 <input @change="changeColor" id="note-color-input" type="color" value="#eeeeee"/>
@@ -14,7 +31,7 @@ export default {
             <button class="share-note"></button>
             <button class="remvove-note" @click="emitNoteOnBus('remove-note')"></button>
             </div>  
-    </div>
+    </div> -->
     `,
 
     data() {
@@ -36,8 +53,8 @@ export default {
     methods: {
         changeColor(ev) {
             console.log('inside change color', this.noteStyle.backgroundColor);
-            
-             return this.noteStyle.backgroundColor = ev.target.value
+
+            return this.noteStyle.backgroundColor = ev.target.value
         },
         emitNote(identfier) {
             this.$emit(identfier, this.note)

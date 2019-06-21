@@ -1,27 +1,17 @@
 
 
-.note-preview {
+/* .note-preview { */
     /* position: relative; */
-    border: 1px dotted #393e46;
+    /* border: 1px dotted #393e46;
     margin: 10px 10px;
     width: 18vw;
     height: 18vh;
 }
 
-.note-command {
-    /* position: absolute; */
-    bottom: 0;
-    width: 14.3em;
-}
 
-.color-input {
-    background: url('../img/svg/svg/linealcolor/39-art.svg');
-    width: 1.7em;
-    height: 1.7em;
-}
 
 /* [id^="note-color-input"] */
-#note-color-input {
+/* #note-color-input {
     display: none;
 }
 
@@ -53,6 +43,148 @@
     height: 1.9em;
     border: none;
     background-color: #ffffff;
+}
+
+.share-note, .remvove-note, .pinned-note, .color-input:hover {
+    cursor: pointer;
+} */
+
+
+/* Note Style  */
+
+body {
+    /* font-family:arial,sans-serif; */
+    font-size:100%;
+    margin:1em;
+    background:#666;
+    color:#fff;
+}
+
+*{
+    margin:0;
+    padding:0;
+}
+
+h2,p {
+    font-size:100%;
+    font-weight:normal;
+}
+
+.preview-container ,.note-container {
+    list-style:none;
+}
+
+.preview-container {
+    overflow:hidden;
+    padding:3em;
+}
+
+.preview-container .note-container .note-link {
+    text-decoration:none;
+    color:#000;
+    background:#ffc;
+    display:block;
+    height:12em;
+    width:12em;
+    padding:1em;
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    transition: transform .15s linear;
+}
+
+.preview-container .note-container {
+    margin:1em;
+    float:left;
+}
+
+.preview-container .note-container h2 {
+    font-size:140%;
+    font-weight:bold;
+    padding-bottom:10px;
+}
+
+.preview-container .note-container p {
+    font-family:"Reenie Beanie",arial,sans-serif;
+    font-size:180%;
+}
+
+.preview-container .note-container .note-link {
+    transform: rotate(-6deg);
+}
+
+.preview-container .note-container:nth-child(even) .note-link {
+    transform:rotate(4deg);
+    position:relative;
+    top:5px;
+    background:#cfc;
+}
+
+.preview-container .note-container:nth-child(3n) .note-link {
+    transform:rotate(-3deg);
+    position:relative;
+    top:-5px;
+    background:#ccf;
+}
+
+.preview-container .note-container:nth-child(5n) .note-link {
+    transform:rotate(5deg);
+    position:relative;
+    top:-10px;
+}
+
+.preview-container .note-container .note-link:hover,.preview-container .note-container .note-link:focus {
+    cursor: default;
+    box-shadow:10px 10px 7px rgba(0,0,0,.7);
+    transform: scale(1.25);
+    position:relative;
+    z-index:5;
+}
+  ol{text-align:center;}
+  ol .note-container{display:inline;padding-right:1em;}
+  ol .note-container .note-link{color:#fff;}
+
+/* Note Function  */
+
+.note-command { 
+    position: absolute;
+    bottom: 7px;
+    width: 12em;
+} 
+
+.color-input {
+    background: url('../img/svg/svg/linealcolor/39-art.svg');
+    width: 1.7em;
+    height: 1.7em;
+} 
+
+#note-color-input {
+    display: none;
+}
+
+.pinned-note {
+    background: url('../img/svg/svg/lineal/18-save-the post.svg');
+    border: none;
+    width: 1.9em;
+    height: 1.9em;;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.remvove-note {
+    background: url('../img/svg/svg/lineal/48-trash.svg');
+    border: none;
+    width: 1.9em;
+    height: 1.9em;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.share-note {
+    background: url('../img/svg/svg/lineal/23-globe.svg');
+    width: 1.9em;
+    height: 1.9em;
+    border: none;
 }
 
 .share-note, .remvove-note, .pinned-note, .color-input:hover {
