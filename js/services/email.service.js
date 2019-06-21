@@ -2,7 +2,10 @@
 import {emailData , trashedEmails} from './data/mock-email-data.js'
 import { storageService } from './storage.service.js'
 
+
+
 const MAIL_KEY = 'emails'
+
 export const emailService = {
     query,
     create,
@@ -21,8 +24,11 @@ function query(filter) {
         emails = emailData.slice();
     }
     emailsDB = emails;
-    console.log(emailsDB);
     storageService.store(MAIL_KEY, emails);
+    if(filter){
+      return Promise.resolve(emailsDB.filter(email => email.subject.toLowerCase().includes(filter)));
+    }
+    console.log(emailsDB);
     return Promise.resolve(emails);
 
 }
