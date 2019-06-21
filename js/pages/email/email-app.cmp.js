@@ -10,9 +10,10 @@ export default {
         <section class="email-app">
             <email-filter @email-filter="setFilter"></email-filter>
             <section class="flex">
-                <email-nav @page-select="changePage"></email-nav>
+                <email-nav @page-select="getEmailsToShow"></email-nav>
                 <email-list v-if="emailsToShow" :emails="emailsToShow" ></email-list>
             </section>
+            <button v-if="pageNumber > 0" @click="movePage(-1)"><</button> <button @click="movePage(1)">></button>
         </section>
     `,
 
@@ -37,10 +38,14 @@ export default {
             this.filter = filter;
             emailService.query(filter).then(emails => this.emails = emails);
         },
-        changePage(selectedPage) {
+        getEmailsToShow(selectedPage = this.selectedPage) {
             this.selectedPage = selectedPage;
             emailService.query(this.filter, selectedPage, this.emailsPerPage, this.pageNumber)
                 .then(emails => this.emailsToShow = emails);
+        },
+        movePage(diff){
+            this.pageNumber += diff;
+            this.getEmailsToShow();
         }
     },
     components: {
@@ -54,7 +59,7 @@ export default {
             .then(emails => this.emailsToShow = emails)
         eventBus.$on('delete-email', id => {
             emailService.remove(id)
-            this.changePage(this.selectedPage)
+            this.getEmailsToShow()
         })
         eventBus.$on('toggle-read', emailService.toggleRead)
 

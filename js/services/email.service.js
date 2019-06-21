@@ -14,7 +14,7 @@ export const emailService = {
 }
 let emailsDB;
 let trashDB = trashedEmails;
-function query(filter,page,emailsPerPage,pageNumber) {
+function query(filter, page, emailsPerPage, pageNumber) {
     let emails;
     if (!emailsDB) {
         emails = storageService.load(MAIL_KEY);
@@ -24,23 +24,24 @@ function query(filter,page,emailsPerPage,pageNumber) {
     if (!emails && !emailsDB) {
         emails = emailData.slice();
     }
-     emailsDB = emails;
-     storageService.store(MAIL_KEY, emails);
-     if (filter) {
-         emails = emailsDB.filter(email => email.subject.toLowerCase().includes(filter));
-        }
-        switch(page){
-            case 'inbox':
-            return Promise.resolve(emails.slice(emailsPerPage*pageNumber, emailsPerPage*(pageNumber+1)));
-        case 'starred': 
-        let starredEmailsToShow = [];
-        for(let i = 0 ; i <emails.length || starredEmailsToShow.length < emailsPerPage ; i++){
-            if(emails[i].isStarred) starredEmailsToShow.push(emails[i]);
-        }
-        console.log(starredEmailsToShow);
-        return Promise.resolve(starredEmailsToShow);
-        case 'trash': 
-        return Promise.resolve(trashDB.slice(emailsPerPage*pageNumber, emailsPerPage*(pageNumber+1)));
+    emailsDB = emails;
+    storageService.store(MAIL_KEY, emails);
+    if (filter) {
+        emails = emailsDB.filter(email => email.subject.toLowerCase().includes(filter));
+    }
+    console.log(pageNumber)
+    switch (page) {
+        case 'inbox':
+            return Promise.resolve(emails.slice(emailsPerPage * pageNumber, emailsPerPage * (pageNumber + 1)));
+        case 'starred':
+            let starredEmailsToShow = [];
+            for (let i = 0; i < emails.length || starredEmailsToShow.length < emailsPerPage; i++) {
+                if (emails[i].isStarred) starredEmailsToShow.push(emails[i]);
+            }
+            console.log(starredEmailsToShow);
+            return Promise.resolve(starredEmailsToShow.slice(emailsPerPage * pageNumber, emailsPerPage * (pageNumber + 1)));
+        case 'trash':
+            return Promise.resolve(trashDB.slice(emailsPerPage * pageNumber, emailsPerPage * (pageNumber + 1)));
     }
     return Promise.resolve(emailsDB);
 
@@ -79,7 +80,7 @@ function remove(id) {
     let email = emailsDB.splice(idx, 1);
     console.log(email)
     trashedEmails.unshift(...email);
-    storageService.store(MAIL_KEY,emailsDB)
+    storageService.store(MAIL_KEY, emailsDB)
     console.log(trashedEmails);
 }
 
