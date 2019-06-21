@@ -1,5 +1,5 @@
 'use strict';
-import {emailData , trashedEmails} from './data/mock-email-data.js'
+import { emailData, trashedEmails } from './data/mock-email-data.js'
 import { storageService } from './storage.service.js'
 
 
@@ -11,6 +11,7 @@ export const emailService = {
     create,
     getById,
     remove,
+    toggleRead
 
 }
 let emailsDB;
@@ -19,28 +20,30 @@ function query(filter) {
     let emails;
     if (!emailsDB) {
         emails = storageService.load(MAIL_KEY);
+    } else {
+        emails = emailsDB;
     }
-    if (!emails) {
+    if (!emails && !emailsDB) {
         emails = emailData.slice();
     }
-    emailsDB = emails;
-    storageService.store(MAIL_KEY, emails);
-    if(filter){
-      return Promise.resolve(emailsDB.filter(email => email.subject.toLowerCase().includes(filter)));
-    }
+     emailsDB = emails;
     console.log(emailsDB);
+    storageService.store(MAIL_KEY, emails);
+    if (filter) {
+        return Promise.resolve(emailsDB.filter(email => email.subject.toLowerCase().includes(filter)));
+    }
     return Promise.resolve(emails);
 
 }
 
-function create(firstName,lastName,email) {
+function create(firstName, lastName, email) {
     if (!emailsDB) {
         query();
     }
     emailsDB.push(
         {
-            id: emailsDB[emailsDB.length-1],
-            firstName ,
+            id: emailsDB[emailsDB.length - 1],
+            firstName,
             lastName,
             email,
             date: new Date(),
@@ -65,5 +68,14 @@ function remove(id) {
     let idx = _getIDXById(id);
     let email = emailsDB.splice(idx, 1);
     trashedEmails.unshift(email);
+    storageService.store(MAIL_KEY,emailsDB)
     console.log(trashedEmails);
+}
+
+function toggleRead(id) {
+    getById(id).then(email => {
+        email.isRead = !email.isRead;
+        storageService.store(MAIL_KEY, emailsDB);
+    }
+    )
 }

@@ -11,6 +11,10 @@
     font-family: Muli;
     src: url('../font/Muli/Muli-SemiBold.ttf');
 }
+@font-face {
+    font-family: Muli-bold;
+    src: url('../font/Muli/Muli-ExtraBold.ttf');
+}
 
 
 body {

@@ -1,3 +1,7 @@
-.opened {
-    font-weight: bolder;
+.email-preview {
+    font-family: Muli-bold;
+        color: #393e46;
+}
+.email-preview.opened{
+    font-family: Muli;
 }

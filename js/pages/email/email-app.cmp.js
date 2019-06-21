@@ -4,7 +4,7 @@ import { emailService } from '../../services/email.service.js'
 import emailFilter from '../../cmps/email-cmps/email-filter.cmp.js'
 export default {
     template: `
-        <section>
+        <section class="email-app">
             <email-filter @email-filter="setFilter"></email-filter>
             <email-list v-if="emails" :emails="emails" ></email-list>
         </section>
@@ -17,6 +17,7 @@ export default {
     },
 
     props: [],
+    name:'emailApp',
     computed: {
 
     },
