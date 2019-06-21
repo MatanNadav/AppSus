@@ -48,11 +48,11 @@ function _getIDXById(id) {
     if (!emailsDB) {
         query();
     }
-    return emailsDB.findIndex(email => id === email.id);
+    return emailsDB.findIndex(email => +id === email.id);
 }
 function getById(id) {
     let idx = _getIDXById(id);
-    return emailsDB[idx];
+    return Promise.resolve(emailsDB[idx]);
 }
 
 function remove(id) {
