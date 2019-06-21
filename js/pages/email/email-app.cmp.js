@@ -61,7 +61,10 @@ export default {
             emailService.remove(id)
             this.getEmailsToShow()
         })
-        eventBus.$on('toggle-read', emailService.toggleRead)
+        eventBus.$on('toggle-read', id => {
+            emailService.toggleRead(id);
+            this.getEmailsToShow();
+        })
 
     }
 }
