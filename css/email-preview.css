@@ -1,7 +1,16 @@
 .email-preview {
+    background-color: white;
+    border: 1px solid black;
+    border-collapse: collapse;
     font-family: Muli-bold;
         color: #393e46;
+        height: 25px;
+        display: flex;
+        cursor: pointer;
 }
 .email-preview.opened{
     font-family: Muli;
+}
+.email-preview button {
+    width: 20px;
 }
