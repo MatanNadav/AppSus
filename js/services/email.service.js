@@ -28,7 +28,14 @@ function query(filter, page, emailsPerPage, pageNumber) {
     emailsDB = emails;
     storageService.store(MAIL_KEY, emails);
     if (filter) {
-        emails = emailsDB.filter(email => email.subject.toLowerCase().includes(filter));
+        emails = emailsDB.filter(email => {
+            let isIntxtFilter = (email.subject.toLowerCase().includes(filter.txt));
+            let isInsortFilter;
+            if (filter.sort === 'read') isInsortFilter = email.isRead;
+            else if (filter.sort === 'unread') isInsortFilter = !email.isRead;
+            else isInsortFilter = true;
+            return isInsortFilter && isIntxtFilter;
+        });
     }
     let startingIdx = pageNumber * emailsPerPage;
     let emailsToShow = [];
@@ -98,22 +105,22 @@ function toggleStarred(id) {
     })
 }
 
-function createRandomResponse(email){
-    let responseDB = ['Got it', 'im on it','Nice to meet you','Unsubcribe','GOD DAMM STOP SPAMMING ME ' ,
-     'please verify your email','You go queen', 'I will get back to you on that']
-     let responseTime = new Date(Date.now());
+function createRandomResponse(email) {
+    let responseDB = ['Got it', 'im on it', 'Nice to meet you', 'Unsubcribe', 'GOD DAMM STOP SPAMMING ME ',
+        'please verify your email', 'You go queen', 'I will get back to you on that']
+    let responseTime = new Date(Date.now());
     let response = {
-         id : utilService.getRandomString(6),
-         subject : 're:' + email.subject,
-         body: responseDB[utilService.getRandomInt(0,7)],
-         emailAdress : email.emailAdress,
-         time:responseTime.toTimeString('he-IL'),
-         date: responseTime.toLocaleDateString('he-IL'),
-         isStarred:false,
-         isSent:false,
-         isRead:false,
-         isTrash:false
+        id: utilService.getRandomString(6),
+        subject: 're:' + email.subject,
+        body: responseDB[utilService.getRandomInt(0, 7)],
+        emailAdress: email.emailAdress,
+        time: responseTime.toTimeString('he-IL'),
+        date: responseTime.toLocaleDateString('he-IL'),
+        isStarred: false,
+        isSent: false,
+        isRead: false,
+        isTrash: false
     };
     emailsDB.unshift(response);
-            
+
 }

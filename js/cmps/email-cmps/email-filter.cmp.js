@@ -4,25 +4,33 @@
 export default {
     template: `
         <section>
-            <input type="text" v-model="filterTxt" @input="emitFilter">
+            <input type="text" v-model="filter.txt" @input="emitFilter">
+            <select @change="emitFilter" v-model="filter.sort">
+            <option value="all">All</option>
+            <option value="unread">Unread</option>
+            <option value="read">Read</option>
+            </select>
         </section>
     `,
 
     data() {
         return {
-            filterTxt: '',
+            filter: {
+                txt:'',
+                sort:'all'
+            }
         }
     },
 
-    props:[],
+    props: [],
     computed: {
 
     },
 
     methods: {
-     emitFilter(){
-         this.$emit('email-filter',this.filterTxt);
-     }
+        emitFilter() {
+            this.$emit('email-filter', this.filter);
+        }
     },
 
     created() {
