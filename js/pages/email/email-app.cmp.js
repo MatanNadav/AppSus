@@ -52,7 +52,6 @@ export default {
         },
         movePage(diff) {
             this.pageNumber += diff;
-            console.log(this.pageNumber)
             this.getEmailsToShow();
         },
         moveToComposePage() {

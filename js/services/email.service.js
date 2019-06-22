@@ -75,7 +75,6 @@ function getById(id) {
 
 function remove(id) {
     let idx = _getIDXById(id);
-   console.log(idx,id)
     if (emailsDB[idx].isTrash) {
         emailsDB.splice(idx, 1);
     } else {
