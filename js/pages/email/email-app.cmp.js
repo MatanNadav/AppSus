@@ -10,12 +10,12 @@ export default {
         <section class="email-app">
             <email-filter @email-filter="setFilter"></email-filter>
             <section class="flex">
-                <email-nav @page-select="getEmailsToShow"></email-nav>
+                <email-nav @page-select="setPageFilter"></email-nav>
                 <email-list v-if="emailsToShow" :emails="emailsToShow" ></email-list>
             </section>
             <button v-if="pageNumber > 0" @click="movePage(-1)"><</button> 
             <button @click="moveToComposePage">Send Email</button>
-            <button @click="movePage(1)">></button>
+            <button v-if="emailsToShow && emailsToShow.length === 25" @click="movePage(1)">></button>
         </section>
     `,
 
@@ -41,10 +41,14 @@ export default {
             // emailService.query(filter).then(emails => this.emailsToShow = emails);
             this.getEmailsToShow();
         },
-        getEmailsToShow(selectedPage = this.selectedPage) {
-            this.selectedPage = selectedPage;
-            emailService.query(this.filter, selectedPage, this.emailsPerPage, this.pageNumber)
+        getEmailsToShow() {
+            emailService.query(this.filter, this.selectedPage, this.emailsPerPage, this.pageNumber)
                 .then(emails => this.emailsToShow = emails);
+        },
+        setPageFilter(selectedPage){
+            this.selectedPage = selectedPage;
+            this.pageNumber = 0;
+             this.getEmailsToShow();           
         },
         movePage(diff){
             this.pageNumber += diff;
