@@ -1,0 +1,13 @@
+.email-compose * {
+    box-sizing: border-box;
+}
+.email-compose input{
+width: 100vw;
+height: 5vh;
+border:1px solid black;
+}
+.email-compose textarea{
+    border:1px solid black;
+    width: 100vw;
+    height: 89vh;
+}
