@@ -3,12 +3,17 @@
 @import './notes-preview.css';
 @import './notes-edit.css';
 @import './email-preview.css';
+@import './email-compose.css';
 
 
 /* fonts */
 @font-face {
     font-family: Muli;
     src: url('../font/Muli/Muli-SemiBold.ttf');
+}
+@font-face {
+    font-family: Muli-bold;
+    src: url('../font/Muli/Muli-ExtraBold.ttf');
 }
 
 

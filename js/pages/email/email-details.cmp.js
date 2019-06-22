@@ -26,7 +26,11 @@ export default {
         getEmailData(){
             console.log(this.$route.params);
             emailService.getById(this.$route.params.emailId)
-            .then(email =>this.emailData = email)
+            .then(email =>{
+                this.emailData = email;
+                if(!email.isRead) emailService.toggleRead(this.$route.params.emailId);
+                console.log(email);
+            })
         }
 
     },
