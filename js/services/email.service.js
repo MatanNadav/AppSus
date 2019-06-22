@@ -1,6 +1,7 @@
 'use strict';
 import emailData from './data/mock-email-data.js'
 import { storageService } from './storage.service.js'
+import utilService from './util.service.js';
 
 const MAIL_KEY = 'emails'
 
@@ -30,10 +31,9 @@ function query(filter, page, emailsPerPage, pageNumber) {
         emails = emailsDB.filter(email => email.subject.toLowerCase().includes(filter));
     }
     let startingIdx = pageNumber * emailsPerPage;
-    let endIdx = (pageNumber + 1) * emailsPerPage;
     let emailsToShow = [];
     for (let i = startingIdx; i < emails.length && emailsToShow.length < emailsPerPage; i++) {
-        if (page === 'inbox' && !emails[i].isTrash) emailsToShow.push(emails[i])
+        if (page === 'inbox' && !emails[i].isTrash && !emails[i].isSent) emailsToShow.push(emails[i])
         else if (page === 'starred' && emails[i].isStarred) emailsToShow.push(emails[i]);
         else if (page === 'trash' && emails[i].isTrash) emailsToShow.push(emails[i])
         else if (page === 'sent' && emails[i].isSent) emailsToShow.push(emails[i])
@@ -58,6 +58,7 @@ function add(email) {
         query();
     }
     emailsDB.unshift(email);
+    createRandomResponse(email);
     storageService.store(MAIL_KEY, emailsDB);
 }
 
@@ -96,4 +97,24 @@ function toggleStarred(id) {
         email.isStarred = !email.isStarred;
         storageService.store(MAIL_KEY, emailsDB);
     })
+}
+
+function createRandomResponse(email){
+    let responseDB = ['Got it', 'im on it','Nice to meet you','Unsubcribe','GOD DAMM STOP SPAMMING ME ' ,
+     'please verify your email','You go queen', 'I will get back to you on that']
+     let responseTime = new Date(Date.now());
+    let response = {
+         id : utilService.getRandomString(6),
+         subject : 're:' + email.subject,
+         body: responseDB[utilService.getRandomInt(0,7)],
+         emailAdress : email.emailAdress,
+         time:responseTime.toTimeString('he-IL'),
+         date: responseTime.toLocaleDateString('he-IL'),
+         isStarred:false,
+         isSent:false,
+         isRead:false,
+         isTrash:false
+    };
+    emailsDB.unshift(response);
+            
 }

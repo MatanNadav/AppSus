@@ -45,20 +45,29 @@ export default {
             emailService.query(this.filter, this.selectedPage, this.emailsPerPage, this.pageNumber)
                 .then(emails => this.emailsToShow = emails);
         },
-        setPageFilter(selectedPage){
+        setPageFilter(selectedPage) {
             this.selectedPage = selectedPage;
             this.pageNumber = 0;
-             this.getEmailsToShow();           
-        },
-        movePage(diff){
-            this.pageNumber += diff;
             this.getEmailsToShow();
         },
-        moveToComposePage(){
+        movePage(diff) {
+            this.pageNumber += diff;
+            console.log(this.pageNumber)
+            this.getEmailsToShow();
+        },
+        moveToComposePage() {
             this.$router.push('/email/compose');
         },
         onEmailDelete(id) {
             emailService.remove(id);
+            this.getEmailsToShow();
+        },
+        onToggleRead(id) {
+            emailService.toggleRead(id);
+            this.getEmailsToShow();
+        },
+        onToggleStar(id) {
+            emailService.toggleStarred(id);
             this.getEmailsToShow();
         }
     },
@@ -72,13 +81,13 @@ export default {
         emailService.query(this.filter, this.selectedPage, this.emailsPerPage, this.pageNumber)
             .then(emails => this.emailsToShow = emails)
         eventBus.$on('on-delete-email', this.onEmailDelete)
-        eventBus.$on('toggle-read', id => {
-            emailService.toggleRead(id);
-            this.getEmailsToShow();
-        })
+        eventBus.$on('toggle-read', this.onToggleRead)
+        eventBus.$on('toggle-star', this.onToggleStar)
 
     },
-    beforeDestroy(){
-    eventBus.$off('on-delete-email', this.onEmailDelete)
-    }
+    beforeDestroy() {
+        eventBus.$off('on-delete-email', this.onEmailDelete)
+        eventBus.$off('toggle-read', this.onToggleRead)
+        eventBus.$off('toggle-star', this.onToggleStar)
+}
 }

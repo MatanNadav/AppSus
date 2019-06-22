@@ -5,7 +5,10 @@ import eventBus from "../../event-bus.js";
 export default {
     template: `
     <section class="email-preview" :class="{opened : email.isRead}" @click="goToEmailDetails">
-     <button @click.stop="emitToggleRead">u</button> <button @click.stop.prevent="onEmailDelete">x</button>  <p>{{email.subject}}<span>{{email.date}} {{email.time}}</span></p>
+    <button @click.stop="emitToggleStar">s</button>
+       <button @click.stop="emitToggleRead">u</button> 
+       <button @click.stop="onEmailDelete">x</button>
+      <p>{{email.subject}}<span>{{email.date}} {{email.time}}</span></p>
     </section>
     `,
     
@@ -31,6 +34,9 @@ export default {
     },
     emitToggleRead(){
       eventBus.$emit('toggle-read',this.email.id);
+    },
+    emitToggleStar(){
+      eventBus.$emit('toggle-star',this.email.id);
     }
     },
 
