@@ -6,7 +6,7 @@ const MAIL_KEY = 'emails'
 
 export const emailService = {
     query,
-    create,
+    add,
     getById,
     remove,
     toggleRead
@@ -28,39 +28,31 @@ function query(filter, page, emailsPerPage, pageNumber) {
     storageService.store(MAIL_KEY, emails);
     if (filter) {
         emails = emailsDB.filter(email => email.subject.toLowerCase().includes(filter));
+        console.log(emails)
     }
-    console.log(pageNumber)
     switch (page) {
         case 'inbox':
             return Promise.resolve(emails.slice(emailsPerPage * pageNumber, emailsPerPage * (pageNumber + 1)));
-        case 'starred':
-            let starredEmailsToShow = [];
+            case 'starred':
+                let starredEmailsToShow = [];
             for (let i = 0; i < emails.length || starredEmailsToShow.length < emailsPerPage; i++) {
                 if (emails[i].isStarred) starredEmailsToShow.push(emails[i]);
             }
             console.log(starredEmailsToShow);
             return Promise.resolve(starredEmailsToShow.slice(emailsPerPage * pageNumber, emailsPerPage * (pageNumber + 1)));
-        case 'trash':
-            return Promise.resolve(trashDB.slice(emailsPerPage * pageNumber, emailsPerPage * (pageNumber + 1)));
-    }
-    return Promise.resolve(emailsDB);
+            case 'trash':
+                return Promise.resolve(trashDB.slice(emailsPerPage * pageNumber, emailsPerPage * (pageNumber + 1)));
+            }
+            return Promise.resolve(emails);
+            
+        }
 
-}
-
-function create(firstName, lastName, email) {
+function add(email) {
     if (!emailsDB) {
         query();
     }
-    emailsDB.push(
-        {
-            id: emailsDB[emailsDB.length - 1],
-            firstName,
-            lastName,
-            email,
-            date: new Date(),
-        },
-
-    );
+    // email.id = emailsDB[emailsDB.length - 1].id + 1;
+    emailsDB.unshift(email);
     storageService.store(MAIL_KEY, emailsDB);
 }
 
@@ -68,7 +60,8 @@ function _getIDXById(id) {
     if (!emailsDB) {
         query();
     }
-    return emailsDB.findIndex(email => +id === email.id);
+    if(!isNaN(+id)) id = +id
+    return emailsDB.findIndex(email => id === email.id);
 }
 function getById(id) {
     let idx = _getIDXById(id);

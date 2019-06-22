@@ -13,7 +13,9 @@ export default {
                 <email-nav @page-select="getEmailsToShow"></email-nav>
                 <email-list v-if="emailsToShow" :emails="emailsToShow" ></email-list>
             </section>
-            <button v-if="pageNumber > 0" @click="movePage(-1)"><</button> <button @click="movePage(1)">></button>
+            <button v-if="pageNumber > 0" @click="movePage(-1)"><</button> 
+            <button @click="moveToComposePage">Send Email</button>
+            <button @click="movePage(1)">></button>
         </section>
     `,
 
@@ -36,7 +38,8 @@ export default {
     methods: {
         setFilter(filter) {
             this.filter = filter;
-            emailService.query(filter).then(emails => this.emails = emails);
+            // emailService.query(filter).then(emails => this.emailsToShow = emails);
+            this.getEmailsToShow();
         },
         getEmailsToShow(selectedPage = this.selectedPage) {
             this.selectedPage = selectedPage;
@@ -46,6 +49,9 @@ export default {
         movePage(diff){
             this.pageNumber += diff;
             this.getEmailsToShow();
+        },
+        moveToComposePage(){
+            this.$router.push('/email/compose');
         }
     },
     components: {

@@ -29,6 +29,7 @@ export default {
             .then(email =>{
                 this.emailData = email;
                 if(!email.isRead) emailService.toggleRead(this.$route.params.emailId);
+                console.log(email);
             })
         }
 
