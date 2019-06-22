@@ -10,12 +10,12 @@ export default {
         <section class="email-app">
             <email-filter @email-filter="setFilter"></email-filter>
             <section class="flex">
-                <email-nav @page-select="getEmailsToShow"></email-nav>
+                <email-nav @page-select="setPageFilter"></email-nav>
                 <email-list v-if="emailsToShow" :emails="emailsToShow" ></email-list>
             </section>
             <button v-if="pageNumber > 0" @click="movePage(-1)"><</button> 
             <button @click="moveToComposePage">Send Email</button>
-            <button @click="movePage(1)">></button>
+            <button v-if="emailsToShow && emailsToShow.length === 25" @click="movePage(1)">></button>
         </section>
     `,
 
@@ -41,17 +41,33 @@ export default {
             // emailService.query(filter).then(emails => this.emailsToShow = emails);
             this.getEmailsToShow();
         },
-        getEmailsToShow(selectedPage = this.selectedPage) {
-            this.selectedPage = selectedPage;
-            emailService.query(this.filter, selectedPage, this.emailsPerPage, this.pageNumber)
+        getEmailsToShow() {
+            emailService.query(this.filter, this.selectedPage, this.emailsPerPage, this.pageNumber)
                 .then(emails => this.emailsToShow = emails);
         },
-        movePage(diff){
+        setPageFilter(selectedPage) {
+            this.selectedPage = selectedPage;
+            this.pageNumber = 0;
+            this.getEmailsToShow();
+        },
+        movePage(diff) {
             this.pageNumber += diff;
             this.getEmailsToShow();
         },
-        moveToComposePage(){
+        moveToComposePage() {
             this.$router.push('/email/compose');
+        },
+        onEmailDelete(id) {
+            emailService.remove(id);
+            this.getEmailsToShow();
+        },
+        onToggleRead(id) {
+            emailService.toggleRead(id);
+            this.getEmailsToShow();
+        },
+        onToggleStar(id) {
+            emailService.toggleStarred(id);
+            this.getEmailsToShow();
         }
     },
     components: {
@@ -63,14 +79,14 @@ export default {
     created() {
         emailService.query(this.filter, this.selectedPage, this.emailsPerPage, this.pageNumber)
             .then(emails => this.emailsToShow = emails)
-        eventBus.$on('delete-email', id => {
-            emailService.remove(id)
-            this.getEmailsToShow()
-        })
-        eventBus.$on('toggle-read', id => {
-            emailService.toggleRead(id);
-            this.getEmailsToShow();
-        })
+        eventBus.$on('on-delete-email', this.onEmailDelete)
+        eventBus.$on('toggle-read', this.onToggleRead)
+        eventBus.$on('toggle-star', this.onToggleStar)
 
-    }
+    },
+    beforeDestroy() {
+        eventBus.$off('on-delete-email', this.onEmailDelete)
+        eventBus.$off('toggle-read', this.onToggleRead)
+        eventBus.$off('toggle-star', this.onToggleStar)
+}
 }
