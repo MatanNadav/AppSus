@@ -14,24 +14,11 @@ function makeid(length = 5) {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
   
     return text;
-  }
-
-function getCurrency(currencyCode) {
-    switch(currencyCode){
-        case 'ILS' : 
-            return '₪';
-        case 'EUR' : 
-            return '€';
-        case 'USD' :
-            return '$';
-        default:
-            return '';
-    }
 }
+
 
 export default {
     getRandomInt,
     getRandomString : makeid,
-    getCurrency
 }
 

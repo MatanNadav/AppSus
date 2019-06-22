@@ -5,7 +5,9 @@ export default {
     template: `
         <li class="note-container" @click="emitNote('show-note')" >
             <a class="note-link" :style="note.bgColor" :class="{important: isImportant}">
+                <h4>{{note.title}}</h4>
                 <p>{{textRender}}</p>
+                <img class="note-img" :src="note.img" alt="" v-if="isImg"/>
                 <div class="note-command flex space-between" @click.stop=""> 
                     <label class="color-input" title="Color">
                         <input @change="changeColor" id="note-color-input" type="color"/>
@@ -21,14 +23,15 @@ export default {
 
     data() {
         return {
-           isImportant: false
+           isImportant: false,
+           isImg: true
         }
     },
     props: ['note'],
 
     computed: {
         textRender() {
-            if (this.note.text.length > 55) return this.note.text.substring(0, 35) + '...'
+            if (this.note.text.length > 25) return this.note.text.substring(0, 25) + '...'
             else return this.note.text
         }
     },

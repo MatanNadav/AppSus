@@ -1,6 +1,7 @@
 'use strict';
 import notesData from './data/mock-notes-data.js';
 import { storageService } from './storage.service.js'
+import util from './util.service.js'
 import eventBus from '../event-bus.js'
 eventBus.$on('update-note', ()=>{
     storageService.store(NOTES_KEY,notesDB);
@@ -14,7 +15,8 @@ export const notesService = {
     getById,
     remove,
     update,
-    save
+    save,
+    createNewNote
 
 }
 const NOTES_KEY = 'missNotes';
@@ -37,7 +39,7 @@ function query(filter) {
 
 }
 
-function save(key = NOTES_KEY, value = notes) {
+function save(key = NOTES_KEY, value = notesDB) {
     storageService.store(key, value);
 }
 
@@ -83,4 +85,19 @@ function update(id,txt){
     let note = getById(id);
     note.text = txt;
     note.time = new Date();
+}
+
+function createNewNote(note) {
+    let newNote = {
+        id: util.getRandomString(),
+        text: note.text,
+        time: new Date().toLocaleString(),
+        img: note.img,
+        title: note.title,
+        bgColor: null
+    }
+    notesDB.unshift(newNote)
+    save()
+    console.log(notesDB);
+    
 }
