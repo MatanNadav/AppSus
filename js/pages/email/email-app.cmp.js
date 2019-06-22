@@ -42,6 +42,7 @@ export default {
             this.getEmailsToShow();
         },
         getEmailsToShow() {
+            console.log('starting')
             emailService.query(this.filter, this.selectedPage, this.emailsPerPage, this.pageNumber)
                 .then(emails => this.emailsToShow = emails);
         },
@@ -68,8 +69,8 @@ export default {
         emailService.query(this.filter, this.selectedPage, this.emailsPerPage, this.pageNumber)
             .then(emails => this.emailsToShow = emails)
         eventBus.$on('delete-email', id => {
-            emailService.remove(id)
-            this.getEmailsToShow()
+            emailService.remove(id);
+            this.getEmailsToShow();
         })
         eventBus.$on('toggle-read', id => {
             emailService.toggleRead(id);

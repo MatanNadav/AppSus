@@ -17,19 +17,20 @@ export default {
     data() {
         return {
             newEmail: {
-                id: '' ,
+                id: utilService.getRandomString(),
                 firstName: '',
-                lastName: '',
-                email: '',
-                date: '',
-                time: '',
-                lat: 0 ,
-                lng: 0,
-                subject: '',
+                lastName:'',
+                emailAddress:'',
+                subject:'',
                 body: '',
-                isRead: false,
-                isStarred: false,
-            }
+                time:null,
+                date: null,
+                isStarred:false,
+                isSent:true,
+                isRead:false,
+                isTrash:false
+            },
+
         }
     },
     props: [],

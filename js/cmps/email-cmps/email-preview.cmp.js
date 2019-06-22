@@ -26,7 +26,8 @@ export default {
        this.$router.push(emailUrl);
     },
     onEmailDelete(){
-        eventBus.$emit('delete-email',this.email.id)
+        console.log(this.email.id)
+        eventBus.$emit('delete-email',this.email.id);
     },
     emitToggleRead(){
       eventBus.$emit('toggle-read',this.email.id);
