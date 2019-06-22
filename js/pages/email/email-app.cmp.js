@@ -42,7 +42,6 @@ export default {
             this.getEmailsToShow();
         },
         getEmailsToShow() {
-            console.log('starting')
             emailService.query(this.filter, this.selectedPage, this.emailsPerPage, this.pageNumber)
                 .then(emails => this.emailsToShow = emails);
         },
@@ -57,6 +56,10 @@ export default {
         },
         moveToComposePage(){
             this.$router.push('/email/compose');
+        },
+        onEmailDelete(id) {
+            emailService.remove(id);
+            this.getEmailsToShow();
         }
     },
     components: {
@@ -68,14 +71,14 @@ export default {
     created() {
         emailService.query(this.filter, this.selectedPage, this.emailsPerPage, this.pageNumber)
             .then(emails => this.emailsToShow = emails)
-        eventBus.$on('delete-email', id => {
-            emailService.remove(id);
-            this.getEmailsToShow();
-        })
+        eventBus.$on('on-delete-email', this.onEmailDelete)
         eventBus.$on('toggle-read', id => {
             emailService.toggleRead(id);
             this.getEmailsToShow();
         })
 
+    },
+    beforeDestroy(){
+    eventBus.$off('on-delete-email', this.onEmailDelete)
     }
 }

@@ -76,11 +76,9 @@ function remove(id) {
     let idx = _getIDXById(id);
    console.log(idx,id)
     if (emailsDB[idx].isTrash) {
-        console.log('splicing')
         emailsDB.splice(idx, 1);
     } else {
         emailsDB[idx].isTrash = true;
-        console.log('not splicing')
     }
     storageService.store(MAIL_KEY, emailsDB);
 }
