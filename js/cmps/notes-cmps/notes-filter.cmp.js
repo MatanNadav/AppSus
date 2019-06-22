@@ -2,8 +2,8 @@
 
 export default {
     template: `
-        <section class="note-filter">
-            <input placeholder="Filter" type="text" v-model="filterBy.txt" @input="emitFilter" />
+        <section class="note-filter-container">
+            <input type="text" placeholder="Search note" class="filter-input" v-model="filterBy.txt" @input="emitFilter" />
         </section>
     `,
 

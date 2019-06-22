@@ -1,70 +1,5 @@
 
-
-/* .note-preview { */
-    /* position: relative; */
-    /* border: 1px dotted #393e46;
-    margin: 10px 10px;
-    width: 18vw;
-    height: 18vh;
-}
-
-
-
-/* [id^="note-color-input"] */
-/* #note-color-input {
-    display: none;
-}
-
-.pinned-note {
-    background: url('../img/svg/svg/lineal/18-save-the post.svg');
-    background-color: #ffffff;
-    border: none;
-    width: 1.9em;
-    height: 1.9em;;
-    background-position: left;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.remvove-note {
-    background: url('../img/svg/svg/lineal/48-trash.svg');
-    background-color: #ffffff;
-    border: none;
-    width: 1.9em;
-    height: 1.9em;
-    background-position: left;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.share-note {
-    background: url('../img/svg/svg/lineal/23-globe.svg');
-    width: 1.9em;
-    height: 1.9em;
-    border: none;
-    background-color: #ffffff;
-}
-
-.share-note, .remvove-note, .pinned-note, .color-input:hover {
-    cursor: pointer;
-} */
-
-
-/* Note Style  */
-
-/* body { */
-    /* font-family:arial,sans-serif; */
-    /* font-size:100%;
-    margin:1em; */
-    /* background:#666; */
-    /* color:#fff; */
-/* } */
-
-*{
-    margin:0;
-    padding:0;
-}
-
+/* Note Style */
 .preview-container ,.note-container {
     list-style:none;
 }
@@ -135,11 +70,9 @@
 .important {
     border: 5px dotted orangered;
 }
-/* ol{text-align:center;}  */
-  /* ol .note-container{display:inline;padding-right:1em;} */
-  /* ol .note-container .note-link{color:#fff;}  */
 
-/* Note Function  */
+
+/* Note Command  */
 
 .note-command { 
     position: absolute;

@@ -1,0 +1,23 @@
+
+
+.note-filter-container {
+    display: inline-block;
+    margin-top: 1em;
+    margin-left: 1em;
+}
+
+.filter-input {
+    padding: 5px;
+    font-size: 20px;
+    border-width: 8px;
+    border-color: #b99d9d;
+    background-color: #ffffff;
+    color: #000000;
+    border-style: double;
+    border-radius: 38px;
+    box-shadow: 0px -10px 18px rgba(66,66,66,.75);
+    text-shadow: 0px 0px 2px rgba(66,66,66,.75);
+}
+.filter-input:focus {
+    outline:none;
+}

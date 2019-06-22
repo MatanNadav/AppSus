@@ -7,8 +7,7 @@ import notesFilter from '../../cmps/notes-cmps/notes-filter.cmp.js';
 export default {
     template: `
     <section class="notes-app">
-        <h1>Notes app</h1>
-
+        <div class="add-note"><img src="img/svg/svg/lineal/25-upload.svg"/></div>
         <notes-filter @set-filter="setFilter"></notes-filter>
         
         <notes-list :notes="notesToShow"> </notes-list>

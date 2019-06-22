@@ -1,0 +1,65 @@
+
+.nav-container {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 120px;
+    margin: auto;
+    position: relative;
+    background-color: #222831;
+    z-index: 7;
+} 
+    .nav-item {
+      float: left;
+      width: 25%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-link {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-decoration: none;
+      position: relative;
+      font-size: 18px;
+      z-index: 9;
+    }
+
+  
+    .nav-link.active {
+    background-color: #fd5e02;
+    }
+
+    .knight-emoji {
+        font-size: 3em;
+    }
+  
+.nav-container .nav-item:nth-child(1):hover, .nav-container .nav-item:nth-child(1):focus,.nav-container .nav-item:nth-child(1):active {
+      left: 0;
+      background-color: #d65a31;
+}
+
+  
+  
+.nav-container .nav-item:nth-child(2):hover, .nav-container .nav-item:nth-child(2):focus, .nav-container .nav-item:nth-child(2):active {
+      left: 25%;
+      background-color: #393e46;
+    
+}
+  
+.nav-container .nav-item:nth-child(3):hover, .nav-container .nav-item:nth-child(3):focus, .nav-container .nav-item:nth-child(3):active {
+      left: 50%;
+      background-color: #d65a31;
+    
+}
+  
+.nav-container .nav-item:nth-child(4):hover, .nav-container .nav-item:nth-child(4):focus, .nav-container .nav-item:nth-child(4):active {
+      left: 75%;
+      background-color: #393e46;
+}
