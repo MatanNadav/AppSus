@@ -7,6 +7,7 @@ eventBus.$on('update-note', ()=>{
     storageService.store(NOTES_KEY,notesDB);
 })
 
+
 let notesPerPage = 25;
 // return notesDB.slice(page * notesPerPage, (page*1)*notesPerPage)
 export const notesService = {
@@ -30,17 +31,16 @@ function query(filter) {
         notes = notesData;
     }
     if(notes) notesDB = notes;
-    sortNotes()
+    sortPinnedNotes()
     save(NOTES_KEY, notes)
-    console.log('!notesDB')
     if(!filter) return Promise.resolve(notesDB);
-    else {
-        return Promise.resolve(notes.filter(note => note.text.includes(filter.txt)));
-    }
+    // else {
+    //     return notes.filter(note => note.text.includes(filter.txt));
+    // }
 
 }
 
-function sortNotes() {
+function sortPinnedNotes() {
     console.log('inside sorting pinned');
     
     notesDB.sort( note => (note.isPinned) ? -1 : 1)
@@ -93,12 +93,4 @@ function create(note) {
     if(typeof note.img === 'string') newNote.img = note.img
     notesDB.unshift(newNote);
     save()
-}
-
-function pinNote(noteToPin) {
-    // let idx = notesDB.findIndex(note => note.id === noteToPin.id)
-    // let pinnedNote = notesDB.splice(idx, 1)
-    // notesDB.unshift(pinnedNote)
-    // console.log('inside service note to pin', notesDB);
-    // query()
 }
