@@ -13,9 +13,11 @@ export default {
                 <email-nav @page-select="setPageFilter"></email-nav>
                 <email-list v-if="emailsToShow" :emails="emailsToShow" ></email-list>
             </section>
-            <button class="email-prev-page btn" v-if="pageNumber > 0" @click="movePage(-1)"><</button> 
             <button class="email-compose-btn" @click="moveToComposePage">Compose</button>
-            <button class="email-next-page btn" v-if="emailsToShow && emailsToShow.length === 25" @click="movePage(1)">></button>
+            <div class="email-page-navigation-btn-container">
+                <button class="email-prev-page btn" v-if="pageNumber > 0" @click="movePage(-1)"><</button> 
+                <button class="email-next-page btn" v-if="emailsToShow && emailsToShow.length === 25" @click="movePage(1)">></button>
+            </div>
         </section>
     `,
 

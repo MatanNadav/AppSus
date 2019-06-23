@@ -27,15 +27,15 @@
 }
 
 
-/* Navigation Button  */
-.email-next-page {
+/* Navigation Button Container */
+.email-page-navigation-btn-container {
     position: absolute;
-    top: 139px;
-    left: 63%;
-}
-
-.email-prev-page {
-    position: absolute;
-    top: 139px;
-    left: 53%;
-}
+    display: flex;
+    flex-direction: row;
+    top: 60%;
+    left: 4%}
+    @media (max-width: 740px) {
+        .email-page-navigation-btn-container {
+            flex-direction: column;
+        }
+    }

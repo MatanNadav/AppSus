@@ -3,7 +3,7 @@
 
 export default {
     template: `
-     <section class="email-filter-container flex space-around">
+     <section class="email-filter-container flex">
             <input class ="email-search-input input" placeholder="search mail" type="text" v-model="filter.txt" @input="emitFilter">
         <select class = "email-sort-input" @change="emitFilter" v-model="filter.sort">
             <option class="email-sort-option" value="all">All</option>
