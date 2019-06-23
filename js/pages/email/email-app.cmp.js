@@ -38,7 +38,6 @@ export default {
     methods: {
         setFilter(filter) {
             this.filter = filter;
-            // emailService.query(filter).then(emails => this.emailsToShow = emails);
             this.getEmailsToShow();
         },
         getEmailsToShow() {
@@ -63,11 +62,10 @@ export default {
         },
         onToggleRead(id) {
             emailService.toggleRead(id);
-            this.getEmailsToShow();
         },
         onToggleStar(id) {
-            emailService.toggleStarred(id);
-            this.getEmailsToShow();
+            emailService.toggleStarred(id)
+            .then(()=> this.getEmailsToShow())
         }
     },
     components: {

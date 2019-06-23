@@ -29,7 +29,7 @@ function query(filter, page, emailsPerPage, pageNumber) {
     storageService.store(MAIL_KEY, emails);
     if (filter) {
         emails = emailsDB.filter(email => {
-            let isIntxtFilter = (email.subject.toLowerCase().includes(filter.txt));
+            let isIntxtFilter = (email.subject.toLowerCase().includes(filter.txt.toLowerCase()));
             let isInsortFilter;
             if (filter.sort === 'read') isInsortFilter = email.isRead;
             else if (filter.sort === 'unread') isInsortFilter = !email.isRead;
@@ -46,18 +46,6 @@ function query(filter, page, emailsPerPage, pageNumber) {
         else if (page === 'sent' && emails[i].isSent) emailsToShow.push(emails[i])
     }
     return Promise.resolve(emailsToShow.slice());
-    // case 'trash':
-    //     for (let i = startingIdx; i < emails.length && emailsToShow.length < emailsPerPage; i++) {
-    //         console.log(emailsToShow)
-    //     }
-    //     return Promise.resolve(emailsToShow.slice());
-    //     case 'sent' : 
-    //             for (let i = startingIdx; i < emails.length && emailsToShow.length < emailsPerPage; i++) {
-    //                 console.log(emailsToShow)
-    //             }
-
-    // return Promise.resolve(emails);
-
 }
 
 function add(email) {
@@ -99,7 +87,7 @@ function toggleRead(id) {
 }
 
 function toggleStarred(id) {
-    getById(id).then(email => {
+    return getById(id).then(email => {
         email.isStarred = !email.isStarred;
         storageService.store(MAIL_KEY, emailsDB);
     })
@@ -109,11 +97,17 @@ function createRandomResponse(email) {
     let responseDB = ['Got it', 'im on it', 'Nice to meet you', 'Unsubcribe', 'GOD DAMM STOP SPAMMING ME ',
         'please verify your email', 'You go queen', 'I will get back to you on that']
     let responseTime = new Date(Date.now());
+    console.log(email.emailAddress)
     let response = {
         id: utilService.getRandomString(6),
         subject: 're:' + email.subject,
-        body: responseDB[utilService.getRandomInt(0, 7)],
-        emailAdress: email.emailAdress,
+        body: responseDB[utilService.getRandomInt(0, 7)] + `     
+        
+        
+        
+${email.body}
+                    `,
+        emailAddress: email.emailAddress,
         time: responseTime.toTimeString('he-IL'),
         date: responseTime.toLocaleDateString('he-IL'),
         isStarred: false,
