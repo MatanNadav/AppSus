@@ -5,12 +5,12 @@ import { emailService } from "../../services/email.service.js";
 
 export default {
     template: `
-    <section @submit.prevent="sendEmail" class="email-compose">
-    <form action="">
-    <input type="text" placeholder="subject" v-model="newEmail.subject">
-    <input type="email" placeholder="To" v-model="newEmail.emailAddress">
-    <textarea name="" v-model="newEmail.body" cols="100" rows="40" placeholder="Email body"></textarea>
-    <button >Send</button>
+    <section @submit.prevent="sendEmail" class="email-compose-container flex">
+    <form class="email-compose-form-container"action="">
+    <input class="email-subjet-input input" type="text" placeholder="subject" v-model="newEmail.subject">
+    <input class="email-recipient-input input" type="email" placeholder="To" v-model="newEmail.emailAddress">
+    <textarea class="email-body-input" name="" v-model="newEmail.body" cols="100" rows="40" placeholder="Email body"></textarea>
+    <button class="email-send-btn btn" >Send</button>
     </form>
     </section>
 `,

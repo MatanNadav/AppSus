@@ -1,12 +1,16 @@
 
 @import'./app-header.css';
-@import'./note-app.css';
+@import'./notes-app.css';
 @import './notes-list.css';
 @import './todo.css';
 @import './notes-preview.css';
 @import './notes-filter.css';
 @import './notes-edit.css';
 @import './add-note.css';
+@import './email-app.css';
+@import './email-filter.css';
+@import './email-nav.css';
+@import './email-list.css';
 @import './email-preview.css';
 @import './email-compose.css';
 
@@ -59,9 +63,25 @@ body {
 
 input:focus {
     outline: none;
- }
+}
 
-
+/* Buttons  */
+.btn {
+    height: 45px;
+    background: #393e46;
+    background-image: linear-gradient(to bottom, #222831, #393e46);
+    border-radius: 28px;
+    box-shadow: 0px 1px 3px #171317;
+    color: #eeeeee;
+    padding: 5px 20px;
+    text-decoration: none;
+}
+  
+.btn:hover {
+    background-image: linear-gradient(to bottom, #393e46, #222831);
+    text-decoration: none;
+    cursor: pointer;
+}
 /* Helpers */
 
 .flex {

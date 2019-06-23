@@ -3,14 +3,15 @@
 
 export default {
     template: `
-        <section>
-            <input type="text" v-model="filter.txt" @input="emitFilter">
-            <select @change="emitFilter" v-model="filter.sort">
-            <option value="all">All</option>
-            <option value="unread">Unread</option>
-            <option value="read">Read</option>
-            </select>
-        </section>
+     <section class="email-filter-container flex">
+            <input class ="email-search-input input" placeholder="search mail" type="text" v-model="filter.txt" @input="emitFilter">
+        <select class = "email-sort-input" @change="emitFilter" v-model="filter.sort">
+            <option class="email-sort-option" value="all">All</option>
+            <option class="email-sort-option" value="unread">Unread</option>
+            <option class="email-sort-option" value="read">Read</option>
+        </select>
+     </section>
+            
     `,
 
     data() {

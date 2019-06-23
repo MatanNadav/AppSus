@@ -2,13 +2,13 @@
 
 export default {
     template: `
-    <section>
+    <section  class="email-nav-container">
         <nav>
-            <ul>
-                <li @click="changePage('inbox')">Inbox</li>
-                <li @click="changePage('starred')">Starred</li>
-                <li @click="changePage('sent')">Sent</li>
-                <li @click="changePage('trash')">Trash</li>
+            <ul class="email-nav-items-container">
+                <li class="email-nav-item" @click="changePage('inbox')">Inbox</li>
+                <li class="email-nav-item" @click="changePage('starred')">Starred</li>
+                <li class="email-nav-item" @click="changePage('sent')">Sent</li>
+                <li class="email-nav-item" @click="changePage('trash')">Trash</li>
             </ul>
         </nav>
     </section>

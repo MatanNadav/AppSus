@@ -8,7 +8,7 @@ export default {
             <a class="note-link" :style="note.bgColor" :class="{important: note.isPinned}">
                 <h4>{{note.title}}</h4>
                 <section v-if="!note.type || note.type === 'text'">
-                    <p @click="printImageFile">{{textRender}}</p>
+                    <p>{{textRender}}</p>
                     <img class="note-img" :src="note.img" alt="" />
                 </section>
                 <note-todo v-if="note.type === 'todo'" :todos="note.todos"></note-todo>
@@ -70,7 +70,6 @@ export default {
         tagNote() {
             this.note.isPinned = !this.note.isPinned;
             this.emitNoteOnBus('pin-note', this.note)
-            // notesService.query()
         }
     },
 

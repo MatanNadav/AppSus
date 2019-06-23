@@ -1,13 +1,4 @@
 
-/* 
-.add-note {
-    margin-right: 20em;
-    margin-left: 3em;
-    width: 75px;
-    height: 75px;
-
-} */
-
 .add-note-screen {
     position: fixed;
     z-index: 2;

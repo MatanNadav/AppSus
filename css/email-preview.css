@@ -1,17 +1,84 @@
-.email-preview {
-    background-color: white;
-    border: 1px solid black;
+
+/* Email Preview */
+
+.email-preview-container {
+    background-color: #eeeeee;
+    border: 1px solid #222831;
+    border-radius: 28px;
     border-collapse: collapse;
     font-family: Muli-bold;
         color: #393e46;
-        height: 25px;
-        display: flex;
+        height: 3em;
+        padding: 1em 0;
         cursor: pointer;
-        align-items: center;
 }
-.email-preview.opened{
+.email-preview-container.opened{
     font-family: Muli;
 }
-.email-preview button {
-    width: 20px;
+
+.email-preview-container:hover {
+    border: 2px solid #222831;
+}
+
+.email-text-container {
+    width: 100%
+}
+.email-text-container .email-date {
+    margin-right: 1em
+}
+
+
+/* Email Command */
+.email-command-container {
+    width: 8em;
+}
+
+.email-command-container:hover {
+    cursor: default;
+}
+
+.preview-btn {
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    font-size: 1.4rem;
+}
+
+.email-star {
+    background: url('../img/svg/svg/lineal/46-idea.svg');
+    width: 1em;
+    height: 1em;
+}
+.email-star:hover {
+    cursor: pointer;
+}
+
+.email-read {
+    background: url('../img/svg/svg/lineal/1-book.svg');
+    width: 1em;
+    height: 1em;
+}
+.email-read:hover {
+    cursor: pointer;
+}
+
+.email-delete {
+    background: url('../img/svg/svg/lineal/48-trash.svg');
+    width: 1em;
+    height: 1em;
+}
+.email-delete:hover {
+    cursor: pointer;
+}
+.email-star.star {
+    background: url('../img/svg/svg/linealcolor/46-idea.svg')
+}
+
+.email-read.read {
+    background: url('../img/svg/svg/linealcolor/1-book.svg');
+    background-color: #d65a31
+}
+
+.email-text-container {
+    margin-left: 1em;
 }
