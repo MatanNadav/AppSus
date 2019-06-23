@@ -17,7 +17,6 @@ export const emailService = {
 let emailsDB;
 function query(filter, page, emailsPerPage, pageNumber) {
     let emails;
-    console.log(page)
     if (!emailsDB) {
         emails = storageService.load(MAIL_KEY);
     } else {
@@ -96,13 +95,14 @@ function toggleStarred(id) {
 
 function createRandomResponse(email) {
     let responseDB = ['Got it', 'im on it', 'Nice to meet you', 'Unsubcribe', 'GOD DAMM STOP SPAMMING ME ',
-        'please verify your email', 'You go queen', 'I will get back to you on that']
+        'please verify your email', 'You go queen', 'I will get back to you on that'
+        ,'You really wearing that ?','Damm girl','BuhBye','SHUT THE FK UP']
     let responseTime = new Date(Date.now());
     console.log(email.emailAddress)
     let response = {
         id: utilService.getRandomString(6),
         subject: 're:' + email.subject,
-        body: responseDB[utilService.getRandomInt(0, 7)] + `     
+        body: responseDB[utilService.getRandomInt(0, 11)] + `     
         
         
         
