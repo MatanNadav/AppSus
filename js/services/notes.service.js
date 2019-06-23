@@ -32,9 +32,10 @@ function query(filter) {
     if(notes) notesDB = notes;
     sortNotes()
     save(NOTES_KEY, notes)
-    if(!filter) return Promise.resolve(notes);
+    console.log('!notesDB')
+    if(!filter) return Promise.resolve(notesDB);
     else {
-        return notes.filter(note => note.text.includes(filter.txt));
+        return Promise.resolve(notes.filter(note => note.text.includes(filter.txt)));
     }
 
 }
