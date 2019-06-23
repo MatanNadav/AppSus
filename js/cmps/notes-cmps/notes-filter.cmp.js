@@ -3,7 +3,7 @@
 export default {
     template: `
         <section class="note-filter-container">
-            <input type="text" placeholder="Search note" class="filter-input" v-model="filterBy.txt" @input="emitFilter" />
+            <input type="text" placeholder="Search note" class="filter-input input" v-model="filterBy.txt" @input="emitFilter" />
         </section>
     `,
 

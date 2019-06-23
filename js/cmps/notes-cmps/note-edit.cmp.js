@@ -5,8 +5,8 @@ export default {
     template: `
     <section class="edit-container">
         <section class="note-modal">
-            <p>{{selectedNote.text}}</p>
-          <textarea class="edit-text" v-model="selectedNote.text" cols="30" rows="10"></textarea>
+            <input class="add-title-input" type="text" placeholder="Title" v-model="title"  />
+          <textarea class="update-note-text" v-model="selectedNote.text" cols="30" rows="10"></textarea>
         </section>
         <div class="screen" @click="closeModal">
             </div>   
@@ -15,7 +15,7 @@ export default {
 
     data() {
         return {
-
+            title:''
         }
     },
 
@@ -27,6 +27,7 @@ export default {
 
     methods: {
       closeModal(){
+          this.selectedNote.title = this.title
           eventBus.$emit('update-note',this.selectedNote)
           this.$emit('close-modal')
       }
