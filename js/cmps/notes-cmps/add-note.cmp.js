@@ -17,12 +17,15 @@ export default {
             </label>
         </section>
         <add-todo-note @todos-changed="setTodos" v-if="noteType === 'todo'"></add-todo-note>
-
+          <section v-if="noteType === 'video'">
+            <input type="url" placeholder="Video url" v-model="newNote.video">
+          </section>
         
         <button class="submit-note" @click="submitNote" >Save</button>
      
             <input type="radio" name="note-type" value="text" v-model="noteType" >
             <input type="radio" name="note-type" value="todo" v-model="noteType" >
+            <input type="radio" name="note-type" value="video" v-model="noteType" >
     </section>
     `,
 
@@ -33,6 +36,7 @@ export default {
                 title: '',
                 text: '',
                 img: null,
+                video: '',
                 todos: []
             },
         }
@@ -58,12 +62,12 @@ export default {
 
         submitNote() {
             this.newNote.type = this.noteType;
-            console.log('note addded',this.newNote)
+            console.log('note addded', this.newNote)
             this.$emit('add-note', this.newNote)
 
         },
-        setTodos(todos){
-             this.newNote.todos = todos
+        setTodos(todos) {
+            this.newNote.todos = todos
         }
     },
     components: {

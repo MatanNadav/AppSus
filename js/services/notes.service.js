@@ -84,7 +84,8 @@ function create(note) {
         bgColor: null,
         isPinned: false,
         type:note.type,
-        todos:note.todos
+        todos:note.todos,
+        video:note.video
     }
     if(typeof note.img === 'string') newNote.img = note.img
     notesDB.unshift(newNote);

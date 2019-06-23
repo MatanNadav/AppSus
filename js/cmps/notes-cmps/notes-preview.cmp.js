@@ -12,6 +12,11 @@ export default {
                     <img class="note-img" :src="note.img" alt="" />
                 </section>
                 <note-todo v-if="note.type === 'todo'" :todos="note.todos"></note-todo>
+                <section v-if="note.type === 'video'">
+                <video controls>
+                  <source :src="note.video">
+                </video>
+                </section>
 
                 <div class="note-command flex space-between" @click.stop=""> 
                     <label class="color-input" title="Color">

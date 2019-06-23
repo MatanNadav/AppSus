@@ -16,7 +16,7 @@ export default {
             <button class="email-compose-btn" @click="moveToComposePage">Compose</button>
             <div class="email-page-navigation-btn-container">
                 <button class="email-prev-page btn" v-if="pageNumber > 0" @click="movePage(-1)"><</button> 
-                <button class="email-next-page btn" v-if="emailsToShow && emailsToShow.length === 25" @click="movePage(1)">></button>
+                <button class="email-next-page btn" v-if="emailsToShow && emailsToShow.length === emailsPerPage" @click="movePage(1)">></button>
             </div>
         </section>
     `,
@@ -26,7 +26,7 @@ export default {
             emailsToShow: null,
             selectedPage: 'inbox',
             pageNumber: 0,
-            emailsPerPage: 25,
+            emailsPerPage: 10,
             filter: null
         }
     },

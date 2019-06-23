@@ -13,6 +13,9 @@ export default {
                         <input class="add-title-input" type="text" placeholder="Title" v-model="title"  />
                 <edit-todo-note :note="selectedNote"></edit-todo-note> 
             </section>
+            <section v-if="selectedNote.type === 'video'">
+                <input type="url" v-model="selectedNote.video">
+            </section>
         </section>
         <div class="screen" @click="closeModal">
             </div>   
