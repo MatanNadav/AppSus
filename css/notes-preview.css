@@ -23,7 +23,8 @@
 }
 
 .preview-container .note-container {
-    margin:3em 3em;
+    margin:2em 2em;
+    padding: 20px;
     float:left;
 }
 
@@ -73,6 +74,7 @@
 
 .important {
     border: 5px dotted orangered;
+    /* margin: 1em */
 }
 
 /* Note Image */

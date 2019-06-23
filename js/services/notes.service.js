@@ -16,21 +16,21 @@ export const notesService = {
     remove,
     update,
     save,
-    createNewNote
 
 }
 const NOTES_KEY = 'missNotes';
 let notesDB;
-// console.log(notesData);
+
 function query(filter) {
     let notes;
     if (!notesDB) {
         notes = storageService.load(NOTES_KEY);
     }
-    if (!notes) {
-        notes = notesData.slice();
+    if (!notes && !notesDB) {
+        notes = notesData;
     }
-    notesDB = notes;
+    if(notes) notesDB = notes;
+    sortNotes()
     save(NOTES_KEY, notes)
     if(!filter) return Promise.resolve(notes);
     else {
@@ -39,31 +39,18 @@ function query(filter) {
 
 }
 
+function sortNotes() {
+    console.log('inside sorting pinned');
+    
+    notesDB.sort( note => (note.isPinned) ? -1 : 1)
+    console.log(notesDB);
+    
+}
+
 function save(key = NOTES_KEY, value = notesDB) {
     storageService.store(key, value);
 }
 
-function pinNote(noteToPin) {
-    // let idx = notesDB.findIndex(note => note.id === noteToPin.id)
-    // let pinnedNote = notesDB.splice(idx, 1)
-    // notesDB.unshift(pinnedNote)
-    // console.log('inside service note to pin', notesDB);
-    // query()
-}
-
-function create(txt, imgUrl) {
-    if (!notesDB) {
-        query();
-    }
-    notesDB.push({
-        id: notesDB[notesDB.length - 1].id + 1,
-        text: txt,
-        date: new Date(),
-        time: new Date(),
-        img: imgUrl || null,
-    });
-    storageService.store(NOTES_KEY, notesDB);
-}
 
 function _getIDXById(id) {
     if (!notesDB) {
@@ -79,6 +66,7 @@ function getById(id) {
 function remove(id){
     let idx = _getIDXById(id);
     notesDB.splice(idx,1);
+    save()
 }
 
 function update(id,txt){
@@ -87,17 +75,29 @@ function update(id,txt){
     note.time = new Date();
 }
 
-function createNewNote(note) {
+
+function create(note) {
+    if (!notesDB) {
+        query();
+    }
     let newNote = {
         id: util.getRandomString(),
         text: note.text,
         time: new Date().toLocaleString(),
-        img: note.img,
+        img: null,
         title: note.title,
-        bgColor: null
+        bgColor: null,
+        isPinned: false
     }
-    notesDB.unshift(newNote)
+    if(typeof note.img === 'string') newNote.img = note.img
+    notesDB.unshift(newNote);
     save()
-    console.log(notesDB);
-    
+}
+
+function pinNote(noteToPin) {
+    // let idx = notesDB.findIndex(note => note.id === noteToPin.id)
+    // let pinnedNote = notesDB.splice(idx, 1)
+    // notesDB.unshift(pinnedNote)
+    // console.log('inside service note to pin', notesDB);
+    // query()
 }
