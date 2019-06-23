@@ -2,3 +2,7 @@
 .todo-item{
     list-style-type: none;
 }
+
+.todo-done{
+    text-decoration: line-through;
+}
