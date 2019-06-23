@@ -76,10 +76,19 @@ export default {
 
     created() {
         emailService.query(this.filter, this.selectedPage, this.emailsPerPage, this.pageNumber)
-            .then(emails => this.emailsToShow = emails)
+        .then(emails => this.emailsToShow = emails)
         eventBus.$on('on-delete-email', this.onEmailDelete)
         eventBus.$on('toggle-read', this.onToggleRead)
         eventBus.$on('toggle-star', this.onToggleStar)
+        
+    },
+    afterCreated(){
+          console.log('bitt')
+    },
+    mounted(){
+                if(this.$route.fullPath.includes('starred')){
+                    this.selectedPage ='starred'
+                }
 
     },
     beforeDestroy() {

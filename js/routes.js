@@ -11,6 +11,7 @@ export default [
     {path:'/',component: homePageCmp},
     {path:'/about',component: aboutCmp},
     {path:'/email',component: emailAppCmp},
+    {path:'/email/starred',component: emailAppCmp},
     {path:'/email/compose',component:emailComposeCmp},
     {path:'/email/:emailId',component:emailDetailsCmp},
     {path:'/notes',component: notesAppCmp},
