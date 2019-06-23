@@ -8,6 +8,7 @@ export default {
             <input class="add-title-input" type="text" placeholder="Title..." v-model="newNote.title" />
             <img class="note-img add" :src="newNote.img" alt="">
             <input class="add-note-input input" type="text" placeholder="Enter text" v-model="newNote.text" autofocus />
+            <input type="url" v-model="newNote.img" placeholder="Image url">
             <label id="add-img-label">📁
                 <input class="add-img-input" type="file" ref="myImage" @change="getImageUrl">
             </label>
