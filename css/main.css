@@ -2,6 +2,7 @@
 @import'./app-header.css';
 @import'./note-app.css';
 @import './notes-list.css';
+@import './todo.css';
 @import './notes-preview.css';
 @import './notes-filter.css';
 @import './notes-edit.css';

@@ -7,8 +7,8 @@ import addTodoNote from './add-todo-note.cmp.js'
 export default {
     template: `
     <section class="add-note-container">
+        <input class="add-title-input" type="text" placeholder="Title..." v-model="newNote.title" />
         <section v-if="noteType === 'text'">
-            <input class="add-title-input" type="text" placeholder="Title..." v-model="newNote.title" />
             <img class="note-img add" :src="newNote.img" alt="">
             <input class="add-note-input input" type="text" placeholder="Enter text" v-model="newNote.text" autofocus />
             <input type="url" v-model="newNote.img" placeholder="Image url">

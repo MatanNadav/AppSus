@@ -3,8 +3,10 @@ export default {
     template: `
        <section>
             <section v-if="todos.length" >
-                <div v-for="(todo,idx) in todos">
-                    <button @click="editTodo(idx)">edit</button>{{todo.txt}} <button @click="deleteTodo(idx)">X</button>
+                <div v-for="(todo,idx) in note.todos">
+                   <button @click="editTodo(idx)">edit</button> 
+                   <span :class="{'todo-done' : todo.isDone}" @click="toggleTodo(idx)">{{todo.txt}}</span> 
+                   <button @click="deleteTodo(idx)">X</button>
                 </div>
                 </section>
                    <div>
@@ -17,18 +19,18 @@ export default {
 `,
     data() {
         return {
-            todos:[],
-            newTodo:this.getEmptyTodo()
+            todos: [],
+            newTodo: this.getEmptyTodo()
         }
     },
-    props:['editTodos'],
+    props: ['note'],
     computed: {
     },
     methods: {
         addTodo() {
-            if(!this.isEdited) this.todos.push(this.newTodo);
+            if (!this.isEdited) this.todos.push(this.newTodo);
             this.newTodo = this.getEmptyTodo();
-            this.$emit('todos-changed',this.todos);
+            this.$emit('todos-changed', this.todos);
             this.isEdited = false;
         },
         getEmptyTodo(txt = '') {
@@ -37,16 +39,19 @@ export default {
         deleteTodo(idx) {
             this.todos.splice(idx, 1)
         },
-        editTodo(idx){
-            console.log(idx , this.todos[idx])
+        editTodo(idx) {
+            console.log(idx, this.todos[idx])
             this.newTodo = this.todos[idx];
             this.isEdited = true;
+        },
+        toggleTodo(idx){
+            this.todos[idx].isDone = !this.todos[idx].isDone;
         }
     },
     created() {
-        console.log(this.editTodos);
-        if(this.editTodos){
-            this.todos = this.editTodos;
+        console.log(this.note);
+        if (this.note.todos) {
+            this.todos = this.note.todos;
         }
     }
 }

@@ -4,10 +4,9 @@ export default {
 
     template: `
         <section class="todo-app">
-            <h3>TodosSS</h3>
             <ul>
-                <li v-for="(todo, i) in todos" :class="{'todo-done' : todo.isDone}">
-                    {{i+1}} {{todo.txt}} Priority: {{todo.priority}}
+                <li v-for="(todo, i) in todos" class="todo-item" :class="{'todo-done' : todo.isDone}">
+                   {{todo.txt}} Priority: {{todo.priority}}
                 </li>
             </ul>
           
