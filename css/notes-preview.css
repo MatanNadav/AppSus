@@ -23,9 +23,9 @@
 }
 
 .preview-container .note-container {
-    margin:2em 2em;
-    padding: 20px;
-    float:left;
+    margin: 20px;
+    display: inline-block
+    /* float:left; */
 }
 
 .preview-container .note-container {
@@ -73,8 +73,8 @@
 }
 
 .important {
-    border: 5px dotted orangered;
-    /* margin: 1em */
+    border: 5px dotted red;
+
 }
 
 /* Note Image */
@@ -113,6 +113,9 @@
     background-size: cover;
 }
 
+.pinned-note.important {
+    background: url('../img/svg/svg/linealcolor/18-save-the-post.svg')
+}
 .remvove-note {
     background: url('../img/svg/svg/lineal/48-trash.svg');
     border: none;

@@ -1,11 +1,10 @@
 'use strict';
 import eventBus from '../../event-bus.js';
-import { notesService } from '../../services/notes.service.js';
 
 export default {
     template: `
-        <li class="note-container" @click="emitNote('show-note')" :class="{important: note.isPinned}">
-            <a class="note-link" :style="note.bgColor" >
+        <li class="note-container" @click="emitNote('show-note')" >
+            <a class="note-link" :style="note.bgColor" :class="{important: note.isPinned}">
                 <h4>{{note.title}}</h4>
                 <p @click="printImageFile">{{textRender}}</p>
                 <img class="note-img" :src="note.img" alt="" />
@@ -13,9 +12,9 @@ export default {
                     <label class="color-input" title="Color">
                         <input @change="changeColor" id="note-color-input" type="color"/>
                     </label>
-                    <button class="pinned-note" @click = "tagNote" title="Important"></button>
+                    <button class="pinned-note" @click = "tagNote" title="Important" :class="{important: note.isPinned}"></button>
                     <button class="share-note" title="Share"></button>
-                    <button class="remvove-note" @click="emitRemoveNoteOnBus('remove-note')" title="Remove"></button>
+                    <button class="remvove-note" @click="emitNoteOnBus('remove-note')" title="Remove"></button>
                 </div>
             </a>
         </li>
@@ -58,19 +57,16 @@ export default {
             this.emitNoteOnBus('update-note')
             return this.note.bgColor
         },
-        pinNote() {
-            // this.emitNoteOnBus('pin-note')
-        },
         emitNote(identfier) {
             this.$emit(identfier, this.note)
         },
-        emitRemoveNoteOnBus(identfier) {
+        emitNoteOnBus(identfier) {
             eventBus.$emit(identfier, this.note);
         },
         tagNote() {
-            // console.log(this.note)
             this.note.isPinned = !this.note.isPinned;
-            notesService.query()
+            this.emitNoteOnBus('pin-note', this.note)
+            // notesService.query()
         }
     },
 
