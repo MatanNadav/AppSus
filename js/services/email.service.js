@@ -17,6 +17,7 @@ export const emailService = {
 let emailsDB;
 function query(filter, page, emailsPerPage, pageNumber) {
     let emails;
+    console.log(page)
     if (!emailsDB) {
         emails = storageService.load(MAIL_KEY);
     } else {
