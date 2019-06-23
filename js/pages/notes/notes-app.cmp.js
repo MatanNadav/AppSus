@@ -29,6 +29,7 @@ export default {
     props: [],
     computed: {
         notesToShow() {
+            console.log('in notesToshow')
             if (!this.filter) return this.notes;
             var filtered =  this.notes.filter(note => note.text.includes(this.filter.txt))
             return filtered            
@@ -59,6 +60,7 @@ export default {
     created() { 
         notesService.query().then(res => {
             this.notes = res;
+            console.log('bobo',res)
         }),
         eventBus.$on('remove-note', this.onRemoveNote),
         eventBus.$on('pin-note', this.onPinNote)

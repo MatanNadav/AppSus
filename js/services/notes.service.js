@@ -7,6 +7,7 @@ eventBus.$on('update-note', ()=>{
     storageService.store(NOTES_KEY,notesDB);
 })
 
+
 let notesPerPage = 25;
 export const notesService = {
     query,

@@ -38,7 +38,6 @@ export default {
     methods: {
         setFilter(filter) {
             this.filter = filter;
-            // emailService.query(filter).then(emails => this.emailsToShow = emails);
             this.getEmailsToShow();
         },
         getEmailsToShow() {
@@ -63,11 +62,10 @@ export default {
         },
         onToggleRead(id) {
             emailService.toggleRead(id);
-            this.getEmailsToShow();
         },
         onToggleStar(id) {
-            emailService.toggleStarred(id);
-            this.getEmailsToShow();
+            emailService.toggleStarred(id)
+            .then(()=> this.getEmailsToShow())
         }
     },
     components: {
@@ -78,10 +76,19 @@ export default {
 
     created() {
         emailService.query(this.filter, this.selectedPage, this.emailsPerPage, this.pageNumber)
-            .then(emails => this.emailsToShow = emails)
+        .then(emails => this.emailsToShow = emails)
         eventBus.$on('on-delete-email', this.onEmailDelete)
         eventBus.$on('toggle-read', this.onToggleRead)
         eventBus.$on('toggle-star', this.onToggleStar)
+        
+    },
+    afterCreated(){
+          console.log('bitt')
+    },
+    mounted(){
+                if(this.$route.fullPath.includes('starred')){
+                    this.selectedPage ='starred'
+                }
 
     },
     beforeDestroy() {

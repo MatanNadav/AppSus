@@ -8,7 +8,7 @@ export default {
     <section @submit.prevent="sendEmail" class="email-compose">
     <form action="">
     <input type="text" placeholder="subject" v-model="newEmail.subject">
-    <input type="email" placeholder="To" v-model="newEmail.email">
+    <input type="email" placeholder="To" v-model="newEmail.emailAddress">
     <textarea name="" v-model="newEmail.body" cols="100" rows="40" placeholder="Email body"></textarea>
     <button >Send</button>
     </form>
@@ -48,5 +48,18 @@ export default {
         }
     },
     created() {
+        console.log(this.$route)
+        if(this.$route.query.id) emailService.getById(this.$route.query.id)
+        .then(emailData => {
+               console.log('data',emailData)
+            this.newEmail.subject =`re:  ${emailData.subject}`;
+            this.newEmail.emailAddress = emailData.emailAddress;
+            this.newEmail.body =`
+
+
+
+${emailData.body}
+            `
+        })
     }
 }
