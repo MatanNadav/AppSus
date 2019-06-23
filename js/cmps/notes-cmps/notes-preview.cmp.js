@@ -66,7 +66,6 @@ export default {
         tagNote() {
             this.note.isPinned = !this.note.isPinned;
             this.emitNoteOnBus('pin-note', this.note)
-            // notesService.query()
         }
     },
 

@@ -8,7 +8,6 @@ eventBus.$on('update-note', ()=>{
 })
 
 let notesPerPage = 25;
-// return notesDB.slice(page * notesPerPage, (page*1)*notesPerPage)
 export const notesService = {
     query,
     create,
@@ -21,22 +20,17 @@ export const notesService = {
 const NOTES_KEY = 'missNotes';
 let notesDB;
 
-function query(filter) {
+function query() {
     let notes;
-    if (!notesDB) {
-        notes = storageService.load(NOTES_KEY);
-    }
-    if (!notes && !notesDB) {
+    notes = storageService.load(NOTES_KEY);
+    
+    if ((!notes || !notes.length) && !notesDB) {
         notes = notesData;
     }
     if(notes) notesDB = notes;
     sortPinnedNotes()
     save(NOTES_KEY, notes)
-    if(!filter) return Promise.resolve(notesDB);
-    // else {
-    //     return notes.filter(note => note.text.includes(filter.txt));
-    // }
-
+    return Promise.resolve(notesDB);
 }
 
 function sortPinnedNotes() {

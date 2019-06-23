@@ -44,24 +44,34 @@ export default {
             this.noteModal = !this.noteModal;
         },
         addNote(newNote) {
-            notesService.create(newNote)
+            notesService.create(newNote);
+            this.noteModal = !this.noteModal;
         },
+        onRemoveNote(note) {
+            notesService.remove(note.id)
+        },
+        onPinNote() {
+            notesService.query()
+        }
+
     },
 
     created() { 
         notesService.query().then(res => {
             this.notes = res;
         }),
-        eventBus.$on('remove-note', (note) => {
-            notesService.remove(note.id)
-        })
-
+        eventBus.$on('remove-note', this.onRemoveNote),
+        eventBus.$on('pin-note', this.onPinNote)
     },
 
     components: {
         notesList,
         notesFilter,
         addNote
+    },
+    
+    beforeDestroy() {
+        eventBus.$off('remove-note', this.onRemoveNote),
+        eventBus.$off('pin-note', this.onPinNote)
     }
-
 }
