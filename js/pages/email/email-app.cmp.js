@@ -9,13 +9,13 @@ export default {
     template: `
         <section class="email-app">
             <email-filter @email-filter="setFilter"></email-filter>
-            <section class="flex">
+            <section class="email-body-container flex">
                 <email-nav @page-select="setPageFilter"></email-nav>
                 <email-list v-if="emailsToShow" :emails="emailsToShow" ></email-list>
             </section>
-            <button v-if="pageNumber > 0" @click="movePage(-1)"><</button> 
-            <button @click="moveToComposePage">Send Email</button>
-            <button v-if="emailsToShow && emailsToShow.length === 25" @click="movePage(1)">></button>
+            <button class="email-prev-page btn" v-if="pageNumber > 0" @click="movePage(-1)"><</button> 
+            <button class="email-compose-btn" @click="moveToComposePage">Compose</button>
+            <button class="email-next-page btn" v-if="emailsToShow && emailsToShow.length === 25" @click="movePage(1)">></button>
         </section>
     `,
 

@@ -2,7 +2,7 @@
 import emailPreview from './email-preview.cmp.js'
 export default {
     template: `
-    <section>
+    <section class="email-list-container flex">
         <email-preview v-for="email in emails" :email="email" :key="email.id"></email-preview>
     </section>
     `,

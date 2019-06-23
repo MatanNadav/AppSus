@@ -6,7 +6,7 @@ export default {
         <li class="note-container" @click="emitNote('show-note')" >
             <a class="note-link" :style="note.bgColor" :class="{important: note.isPinned}">
                 <h4>{{note.title}}</h4>
-                <p @click="printImageFile">{{textRender}}</p>
+                <p>{{textRender}}</p>
                 <img class="note-img" :src="note.img" alt="" />
                 <div class="note-command flex space-between" @click.stop=""> 
                     <label class="color-input" title="Color">

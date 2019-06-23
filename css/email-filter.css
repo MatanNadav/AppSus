@@ -1,0 +1,33 @@
+
+.colors {
+    color: #eeeeee;
+    color: #d65a31;
+    color: #393e46;
+    color: #222831;
+   }
+.email-filter-container {
+    height: 3em;
+    padding: 1em
+}
+
+.email-search-input {
+    margin-left: 20px;
+}
+
+.email-sort-input {
+    height: 3.4em;
+    border-radius: 38px;
+    border: 8px double #393e46;
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+
+}
+
+.email-sort-input:focus {
+    outline: none;
+}
+.email-sort-input:hover {
+    cursor: pointer
+}
+.email-sort-option {
+    font-size: 1.2rem;
+}

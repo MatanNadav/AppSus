@@ -1,13 +1,37 @@
-.email-compose * {
-    box-sizing: border-box;
+
+
+
+.email-compose-container {
+    flex-direction: column;
+    width: 80vw;
+    height: 80vh;
+    margin: 3rem auto
 }
-.email-compose input{
-width: 100vw;
-height: 5vh;
-border:1px solid black;
+
+.email-compose-form-container {
+    margin: 1rem;
+    padding: 2rem 2rem
 }
-.email-compose textarea{
+
+.email-subjet-input, .email-recipient-input {
+    display: block;
+    width: 95%;
+    height: 4%;
     border:1px solid black;
-    width: 100vw;
-    height: 89vh;
+}
+
+.email-body-input {
+    border: 1px solid black;
+    width: 95%;
+    height: 30%;
+    font-size: 20px;
+    padding: 1rem;
+    border-radius: 28px;
+    font-family: 'Muli';
+}
+
+.email-send-btn {
+    position: absolute;
+    top: 20%;
+    left: 3%;
 }
