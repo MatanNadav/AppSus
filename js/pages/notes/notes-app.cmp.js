@@ -44,7 +44,7 @@ export default {
             this.noteModal = !this.noteModal;
         },
         addNote(newNote) {
-            notesService.createNewNote(newNote)
+            notesService.create(newNote)
         },
     },
 
