@@ -1,12 +1,15 @@
 'use strict';
 import eventBus from '../../event-bus.js'
-
+import editTodoNote from './add-todo-note.cmp.js'
 export default {
     template: `
     <section class="edit-container">
-        <section class="note-modal">
+        <section class="note-modal" v-if="!selectedNote.type || selectedNote.type === 'text'">
             <input class="add-title-input" type="text" placeholder="Title" v-model="title"  />
           <textarea class="update-note-text" v-model="selectedNote.text" cols="30" rows="10"></textarea>
+        </section>
+        <section class="note-modal"  v-if="selectedNote.type === 'todo'" >
+            <edit-todo-note :edit-todos="selectedNote.todos"></edit-todo-note> 
         </section>
         <div class="screen" @click="closeModal">
             </div>   
@@ -23,6 +26,9 @@ export default {
     
     computed: {
 
+    },
+    components:{
+        editTodoNote
     },
 
     methods: {

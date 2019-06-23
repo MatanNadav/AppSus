@@ -101,7 +101,7 @@ function createRandomResponse(email) {
     console.log(email.emailAddress)
     let response = {
         id: utilService.getRandomString(6),
-        subject: 're:' + email.subject,
+        subject: 're: ' + email.subject,
         body: responseDB[utilService.getRandomInt(0, 11)] + `     
         
         

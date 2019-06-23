@@ -1,13 +1,18 @@
 'use strict';
 import eventBus from '../../event-bus.js';
+import noteTodo from './note-todo.cmp.js';
 
 export default {
     template: `
         <li class="note-container" @click="emitNote('show-note')" >
             <a class="note-link" :style="note.bgColor" :class="{important: note.isPinned}">
                 <h4>{{note.title}}</h4>
-                <p @click="printImageFile">{{textRender}}</p>
-                <img class="note-img" :src="note.img" alt="" />
+                <section v-if="!note.type || note.type === 'text'">
+                    <p @click="printImageFile">{{textRender}}</p>
+                    <img class="note-img" :src="note.img" alt="" />
+                </section>
+                <note-todo v-if="note.type === 'todo'" :todos="note.todos"></note-todo>
+
                 <div class="note-command flex space-between" @click.stop=""> 
                     <label class="color-input" title="Color">
                         <input @change="changeColor" id="note-color-input" type="color"/>
@@ -23,7 +28,6 @@ export default {
 
     data() {
         return {
-            
         }
     },
     props: ['note'],
@@ -33,21 +37,21 @@ export default {
             if (this.note.text.length > 25) return this.note.text.substring(0, 25) + '...'
             else return this.note.text
         },
-    
+
     },
 
     methods: {
         printImageFile() {
-            if(!this.note.img) return
+            if (!this.note.img) return
 
             let image = this.$refs.previewImage
 
             let file = this.note.img
-            let reader  = new FileReader();
-            reader.onload = function(ev)  {
+            let reader = new FileReader();
+            reader.onload = function (ev) {
                 console.log(image);
                 image.src = ev.target.result;
-             }
+            }
             reader.readAsDataURL(file);
         },
 
@@ -71,6 +75,9 @@ export default {
     },
 
     created() {
-        
+
+    },
+    components: {
+        noteTodo,
     }
 }
