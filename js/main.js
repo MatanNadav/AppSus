@@ -1,7 +1,6 @@
 'use strict';
-/* SERVICES IMPORTS*/
 
-//https://docs.google.com/spreadsheets/d/1auLB41duGN0XU-QukBQEdOe67yRLtSVWCiWPOX5aPfs/edit?usp=sharing
+/* SERVICES IMPORTS*/
 import './services/email.service.js'
 import './services/notes.service.js'
 import appHeader from './cmps/app-header.cmp.js'

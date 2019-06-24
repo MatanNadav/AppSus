@@ -5,7 +5,9 @@ import canvasApp from '../cmps/canvas-cmps/canvas-main.cmp.js'
 
 export default {
     template: `
-<canvas-app></canvas-app>
+    <section class="about-page-container">
+        <canvas-app></canvas-app>
+    </section>
     `,
 
     data() {
@@ -26,7 +28,6 @@ export default {
     },
 
     created() {
-        console.log('inside about');
 
     }
 }

@@ -5,18 +5,16 @@ export default {
      <section @mouseup="mouseUpControls" class="canvas-control flex space-between">
         <input   type="color" class="color-brush" v-model="PaintStatus.strokeColor" >
         <section class="flex">
-        <button @click="toggleRainbowMode">Random colors</button>
-        <button @click="togglePsychMode">:)</button>
+        <button class="random-canvas-color-btn" @click="toggleRainbowMode">Random</button>
+        <button class="psyco-canvas-color-btn" @click="togglePsychMode">:)</button>
     </section>
-        <select v-model="PaintStatus.currElement" name="shape" class="shape" >
+        <select class="canvas-shape-select" v-model="PaintStatus.currElement" name="shape" >
             <option value="square">Square</option>
             <option value="circle">Circle</option>
         </select>
-        <div class="delay-container">
+        <div class="canvas-delay-container">
             <input type="range" class="shape-delay" min="0" max="150" value="30"  
             v-model="PaintStatus.shapeDelay" />
-            
-            
             <span class="delay-show">{{PaintStatus.shapeDelay}}</span>
         </div>
     </section>
@@ -28,7 +26,7 @@ export default {
                 currElement: 'square',
                 isMouseDown: false,
                 timeout: null,
-                strokeColor: '#393e46',
+                strokeColor: '#222831',
                 shapeDelay: 30,
                 isPsych: false,
                 isRainbow: false

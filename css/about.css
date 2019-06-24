@@ -1,0 +1,32 @@
+
+
+
+.about-page-container {
+    height: 100vh;
+}
+
+.canvas-proj-container {
+    border: 2px solid white;
+    display: block;
+    margin: 10% auto;
+    width: 50%
+}
+
+.random-canvas-color-btn, .psyco-canvas-color-btn {
+    background: #393e46;
+    background-image: linear-gradient(to bottom, #222831, #393e46);
+    border-radius: 28px;
+    box-shadow: 0px 1px 3px #171317;
+    color: #eeeeee;
+    padding: 5px 20px;
+    text-decoration: none;
+}
+
+.canvas-shape-select {
+    background: #393e46;
+    border-radius: 28px;
+    box-shadow: 0px 1px 3px #171317;
+    color: #eeeeee;
+    padding: 5px 20px;
+    text-decoration: none;
+}

@@ -20,7 +20,6 @@
     margin-bottom: 2vh;
 }
 
-
 .add-todo-priority {
     width: 5vw;
     height: 2vh;
@@ -30,6 +29,22 @@
     display: block;
     width: 70px;
     margin: 10px auto
+}
+
+
+.edit-todo-btn, .remove-todo-btn {
+    background: transparent;
+    height: 25px;
+    width: 45px;
+    border: 3px double #d65a31;
+    border-radius: 20px;
+    background: #393e46;
+    color: #eeeeee;
+    margin-bottom: 5px;
+}
+
+.edit-todo-btn, .remove-todo-btn:hover {
+    cursor: pointer;
 }
 
 /* Checkbox Style */
@@ -54,26 +69,22 @@
 .is-done-todo-container:hover .is-done-todo-check ~ .is-done-checkbox {
     background-color: #d65a31;
     cursor: pointer;
-  }
+}
   
-  /* When the checkbox is checked, add a blue background */
-  .is-done-todo-container .is-done-todo-check:checked ~ .is-done-checkbox {
+.is-done-todo-container .is-done-todo-check:checked ~ .is-done-checkbox {
     background-color: #d65a31;
-  }
+}
   
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .is-done-checkbox:after {
+.is-done-checkbox:after {
     content: "";
     position: absolute;
     display: none;
-  }
+}
   
-  /* Show the checkmark when checked */
-  .is-done-todo-container .is-done-todo-check:checked ~ .is-done-checkbox:after {
+.is-done-todo-container .is-done-todo-check:checked ~ .is-done-checkbox:after {
     display: block;
-  }
+}
   
-  /* Style the checkmark/indicator */
 .is-done-checkbox:after {
     left: 9px;
     top: 5px;
@@ -85,4 +96,4 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-  }
+}

@@ -1,9 +1,10 @@
 
 @import'./app-header.css';
 @import'./homepage.css';
+@import'./about.css';
 @import'./notes-app.css';
 @import './notes-list.css';
-@import './todo.css';
+@import './add-todo-note.css';
 @import './notes-preview.css';
 @import './notes-filter.css';
 @import './notes-edit.css';
@@ -109,3 +110,4 @@ input:focus {
 .wrap {
     flex-wrap: wrap;
 }
+
