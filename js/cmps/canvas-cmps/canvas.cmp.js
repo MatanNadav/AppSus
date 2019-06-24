@@ -8,7 +8,7 @@ import canvasControls from "./canvas-controls.cmp.js";
 export default {
     template: `
     <section style="background-color:white;">
-     <canvas-controls @status-change="updateStatus"></canvas-controls>
+     <canvas-controls @clear="clear" @status-change="updateStatus"></canvas-controls>
         <section class="container">
             <canvas ref="canvas" class="canvas"  height="300" @mousedown="onCanvasClick"
             @mousemove="onCanvasHoverMovement" @mouseup="onCanvasRelease"
@@ -111,6 +111,9 @@ export default {
         },
         updateStatus(status){
             this.PaintStatus = status;
+        },
+        clear(){
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         }
  
         
@@ -120,6 +123,7 @@ export default {
         this.canvas = this.$refs.canvas,
             this.ctx = this.$refs.canvas.getContext('2d');
             this.ctx.canvas.width = window.innerWidth;
+            
     },
     components:{
         canvasControls
