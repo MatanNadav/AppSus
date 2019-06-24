@@ -2,7 +2,6 @@
 'use strict';
 
 import addTodoNote from './add-todo-note.cmp.js'
-// import eventBus from '../../event-bus.js';
 
 export default {
     template: `
@@ -11,21 +10,21 @@ export default {
         <section v-if="noteType === 'text'">
             <img class="note-img add" :src="newNote.img" alt="">
             <input class="add-note-input input" type="text" placeholder="Enter text" v-model="newNote.text" autofocus />
-            <input type="url" v-model="newNote.img" placeholder="Image url">
+            <input class="add-note-image-url input" type="url" v-model="newNote.img" placeholder="Image url">
             <label id="add-img-label">📁
                 <input class="add-img-input" type="file" ref="myImage" @change="getImageUrl">
             </label>
         </section>
         <add-todo-note @todos-changed="setTodos" v-if="noteType === 'todo'"></add-todo-note>
           <section v-if="noteType === 'video'">
-            <input type="url" placeholder="Video url" v-model="newNote.video">
+            <input class="" type="url" placeholder="Video url" v-model="newNote.video"/>
           </section>
-        
+          <div class="add-note-radio-btn-container">
+              <input class="add-note-radio-btn" type="radio" name="note-type" value="text" v-model="noteType" >
+              <input class="add-note-radio-btn" type="radio" name="note-type" value="todo" v-model="noteType" >
+              <input class="add-note-radio-btn" type="radio" name="note-type" value="video" v-model="noteType" >
+        </div>
         <button class="submit-note" @click="submitNote" >Save</button>
-     
-            <input type="radio" name="note-type" value="text" v-model="noteType" >
-            <input type="radio" name="note-type" value="todo" v-model="noteType" >
-            <input type="radio" name="note-type" value="video" v-model="noteType" >
     </section>
     `,
 
