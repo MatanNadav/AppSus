@@ -53,3 +53,9 @@
             margin-left: 10px;
         }
     }
+
+.email-next-page, .email-prev-page {
+    height: 25px;
+    width: 25px;
+    text-align: center;    
+}
