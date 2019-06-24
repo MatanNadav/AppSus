@@ -27,11 +27,23 @@
     font-size: 20px;
     padding: 1rem;
     border-radius: 28px;
-    font-family: 'Muli';
-}
-
+    font-family: 'Muli';}
+    @media (max-width: 740px) {
+        .email-body-input {
+            height: 25%
+        }
+        .email-subjet-input, .email-recipient-input {
+            height: 3%;
+        }
+    }
 .email-send-btn {
     position: absolute;
-    top: 20%;
-    left: 3%;
-}
+    top: 90%;
+    left: 90%;}
+    @media (max-width: 740px) {
+        .email-send-btn {
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%)
+        }
+    }
