@@ -42,8 +42,8 @@
     position: absolute;
     display: flex;
     flex-direction: row;
-    top: 60%;
-    left: 4%}
+    top: 70%;
+    left: 5.5%}
     @media (max-width: 740px) {
         .email-page-navigation-btn-container {
             top: 82%;
