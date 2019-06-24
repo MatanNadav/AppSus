@@ -4,6 +4,7 @@ import { storageService } from './storage.service.js'
 import utilService from './util.service.js';
 
 const MAIL_KEY = 'emails'
+let gSort;
 
 export const emailService = {
     query,
@@ -14,6 +15,7 @@ export const emailService = {
     toggleStarred
 
 }
+
 let emailsDB;
 function query(filter, page, emailsPerPage, pageNumber) {
     let emails;
@@ -28,11 +30,12 @@ function query(filter, page, emailsPerPage, pageNumber) {
     emailsDB = emails;
     storageService.store(MAIL_KEY, emails);
     if (filter) {
+        sortEmails(filter.sort);
         emails = emailsDB.filter(email => {
             let isIntxtFilter = (email.subject.toLowerCase().includes(filter.txt.toLowerCase()));
             let isInsortFilter;
-            if (filter.sort === 'read') isInsortFilter = email.isRead;
-            else if (filter.sort === 'unread') isInsortFilter = !email.isRead;
+            if (filter.byOpened === 'read') isInsortFilter = email.isRead;
+            else if (filter.byOpened === 'unread') isInsortFilter = !email.isRead;
             else isInsortFilter = true;
             return isInsortFilter && isIntxtFilter;
         });
@@ -46,6 +49,25 @@ function query(filter, page, emailsPerPage, pageNumber) {
         else if (page === 'sent' && emails[i].isSent) emailsToShow.push(emails[i])
     }
     return Promise.resolve(emailsToShow.slice());
+}
+function sortEmails(sort) {
+    if(sort === gSort) return;
+     gSort = sort;
+    if (!sort || sort === 'date') {
+        emailsDB.sort((email1, email2) => {
+            let date1 = email1.date.split('.');
+            let date2 = email2.date.split('.');
+            if (email1.date !== email2.date) {
+                if (date1[2] !== date2[2]) return (date1[2] < date2[2]) ? 1 : -1
+              else  if (date1[1] !== date2[1]) return (date1[1] < date2[1]) ? 1 : -1
+               else  return (date1[0] < date2[0]) ? 1 : -1;
+            } else return (email1.time < email2.time) ? 1 : -1
+        })
+    } else {
+        emailsDB.sort((email1, email2) => {
+            return (email1.subject.toLowerCase() > email2.subject.toLowerCase()) ? 1 : -1;
+        })
+    }
 }
 
 function add(email) {
@@ -96,7 +118,7 @@ function toggleStarred(id) {
 function createRandomResponse(email) {
     let responseDB = ['Got it', 'im on it', 'Nice to meet you', 'Unsubcribe', 'GOD DAMM STOP SPAMMING ME ',
         'please verify your email', 'You go queen', 'I will get back to you on that'
-        ,'You really wearing that ?','Damm girl','BuhBye','SHUT THE FK UP']
+        , 'You really wearing that ?', 'Damm girl', 'BuhBye', 'SHUT THE FK UP']
     let responseTime = new Date(Date.now());
     console.log(email.emailAddress)
     let response = {

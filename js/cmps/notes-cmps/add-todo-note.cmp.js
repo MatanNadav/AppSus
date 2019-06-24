@@ -3,7 +3,7 @@ export default {
     template: `
        <section>
             <section v-if="todos.length" >
-                <div v-for="(todo,idx) in note.todos">
+                <div v-for="(todo,idx) in todos">
                    <button @click="editTodo(idx)">edit</button> 
                    <span :class="{'todo-done' : todo.isDone}" @click="toggleTodo(idx)">{{todo.txt}}</span> 
                    <button @click="deleteTodo(idx)">X</button>
@@ -40,7 +40,6 @@ export default {
             this.todos.splice(idx, 1)
         },
         editTodo(idx) {
-            console.log(idx, this.todos[idx])
             this.newTodo = this.todos[idx];
             this.isEdited = true;
         },
@@ -49,8 +48,7 @@ export default {
         }
     },
     created() {
-        console.log(this.note);
-        if (this.note.todos) {
+        if (this.note && this.note.todos) {
             this.todos = this.note.todos;
         }
     }

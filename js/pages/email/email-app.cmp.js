@@ -74,7 +74,7 @@ export default {
         onOpenNav() {
             console.log('are we in?');
             
-            this.isNavOpen = !isNavOpen;
+            this.isNavOpen = !this.isNavOpen;
         }
     },
     components: {
