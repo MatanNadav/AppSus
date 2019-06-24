@@ -50,7 +50,16 @@
     cursor: pointer;
 }
 
+.add-note-image-url {
+    width: 190px;
+    height: 10px;
+    font-size: 15px;
+}
+
 .submit-note {
+    position: absolute;
+    bottom: 40px;
+    left: 20vw;
     margin-top: 6px;
     background: #393e46;
     background-image: linear-gradient(to bottom, #222831, #393e46);
@@ -67,4 +76,15 @@
     background-image: linear-gradient(to bottom, #393e46, #222831);
     text-decoration: none;
     cursor: pointer;
+}
+
+
+.add-note-radio-btn-container {
+    position: absolute;
+    bottom: 0;
+    left: 20vw
+}
+.add-note-radio-btn {
+    height: 25px;
+    width: 25px;
 }

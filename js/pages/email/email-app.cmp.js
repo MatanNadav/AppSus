@@ -72,9 +72,7 @@ export default {
             emailService.toggleStarred(id)
                 .then(() => this.getEmailsToShow())
         },
-        onOpenNav() {
-            console.log('are we in?');
-            
+        onOpenNav() {            
             this.isNavOpen = !this.isNavOpen;
         }
     },
