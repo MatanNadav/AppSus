@@ -23,7 +23,7 @@ let notesDB;
 
 function query() {
     let notes;
-    notes = storageService.load(NOTES_KEY);
+    if(!notesDB)  notes = storageService.load(NOTES_KEY);
     
     if ((!notes || !notes.length) && !notesDB) {
         notes = notesData;
