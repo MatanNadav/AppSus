@@ -16,6 +16,7 @@ export const notesService = {
     remove,
     update,
     save,
+    getLatest
 
 }
 const NOTES_KEY = 'missNotes';
@@ -90,4 +91,9 @@ function create(note) {
     if(typeof note.img === 'string') newNote.img = note.img
     notesDB.unshift(newNote);
     save()
+}
+
+function getLatest(){
+    if(!notesDB) query();
+    return Promise.resolve(notesDB[0]);
 }

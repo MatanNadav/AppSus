@@ -13,7 +13,8 @@ export const emailService = {
     remove,
     toggleRead,
     toggleStarred,
-    getUnreadPrecentage
+    getUnreadPrecentage,
+    getLatest
 
 }
 
@@ -152,4 +153,9 @@ function getUnreadPrecentage() {
     }
     let precentge = Math.floor((gCount / emailsDB.length) *100);
     return Promise.resolve(precentge);
+}
+
+function getLatest(){
+    if (!emailsDB) query();
+    return Promise.resolve(emailsDB[0])
 }
