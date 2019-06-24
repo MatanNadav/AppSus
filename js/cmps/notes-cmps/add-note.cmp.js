@@ -17,7 +17,7 @@ export default {
         </section>
         <add-todo-note @todos-changed="setTodos" v-if="noteType === 'todo'"></add-todo-note>
           <section v-if="noteType === 'video'">
-            <input class="" type="url" placeholder="Video url" v-model="newNote.video"/>
+            <input class="add-note-video-url input" type="url" placeholder="Video url" v-model="newNote.video"/>
           </section>
           <div class="add-note-radio-btn-container">
               <input class="add-note-radio-btn" type="radio" name="note-type" value="text" v-model="noteType" >
