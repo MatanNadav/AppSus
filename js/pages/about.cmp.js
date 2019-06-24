@@ -1,11 +1,11 @@
-
+import canvasApp from '../cmps/canvas-cmps/canvas-main.cmp.js'
 
 
 'use strict';
 
 export default {
     template: `
-    <h1>This is us</h1>
+<canvas-app></canvas-app>
     `,
 
     data() {
@@ -14,17 +14,19 @@ export default {
         }
     },
 
-    props:[],
+    props: [],
     computed: {
 
     },
-
+    components: {
+        canvasApp
+    },
     methods: {
 
     },
 
     created() {
         console.log('inside about');
-        
+
     }
 }
