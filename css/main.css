@@ -70,7 +70,6 @@ input:focus {
 
 /* Buttons  */
 .btn {
-    height: 45px;
     background: #393e46;
     background-image: linear-gradient(to bottom, #222831, #393e46);
     border-radius: 28px;

@@ -13,7 +13,7 @@ export default {
 
     data() {
         return {
-            welcomeText: `Welcome to Yarin and Matan Appsus, an email and notes app. The project below is our first one together, featuring Canvas-fun`,
+            welcomeText: `Welcome to Yarin and Matan Appsus, an email and notes app. The project below is our first one together, featuring Canvas-fun:`,
             txtAnimation: ''
         }
     },
