@@ -21,7 +21,7 @@ export default {
         }
     },
 
-    props:[],
+    props:['unreadPrecentage'],
     computed: {
 
     },
@@ -37,6 +37,5 @@ export default {
     },
 
     created() {
-
-    }
+    },
 }
