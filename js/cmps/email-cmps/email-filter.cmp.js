@@ -10,6 +10,11 @@ export default {
             <option class="email-sort-option" value="unread">Unread</option>
             <option class="email-sort-option" value="read">Read</option>
         </select>
+        <select class = "email-sort-input" @change="emitFilter" v-model="filter.sort">
+            <option class="email-sort-option" value="all">All</option>
+            <option class="email-sort-option" value="unread">Unread</option>
+            <option class="email-sort-option" value="read">Read</option>
+        </select>
      </section>
             
     `,

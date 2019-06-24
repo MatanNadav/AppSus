@@ -53,6 +53,7 @@ export default {
         },
         onPinNote() {
             notesService.query()
+            
         }
 
     },

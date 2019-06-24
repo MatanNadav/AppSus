@@ -1,5 +1,6 @@
 
 @import'./app-header.css';
+@import'./homepage.css';
 @import'./notes-app.css';
 @import './notes-list.css';
 @import './todo.css';
@@ -12,6 +13,7 @@
 @import './email-nav.css';
 @import './email-list.css';
 @import './email-preview.css';
+@import './email-details.css';
 @import './email-compose.css';
 
 
