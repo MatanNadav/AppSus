@@ -1,19 +1,22 @@
 'use strict'
 export default {
     template: `
-       <section>
-            <section v-if="todos.length" >
+       <section class="add-todo-container flex">
+            <section  v-if="todos.length" >
                 <div v-for="(todo,idx) in todos">
-                   <button @click="editTodo(idx)">edit</button> 
+                   <button class="edit-todo-btn btn" @click="editTodo(idx)">edit</button> 
                    <span :class="{'todo-done' : todo.isDone}" @click="toggleTodo(idx)">{{todo.txt}}</span> 
-                   <button @click="deleteTodo(idx)">X</button>
+                   <button class="remove-todo-btn btn" @click="deleteTodo(idx)">X</button>
                 </div>
-                </section>
-                   <div>
-                <input type="text" placeholder="What todo?" v-model="newTodo.txt" @keyup.enter="addTodo" />
-                <input type="checkbox" v-model="newTodo.isDone"  /> Done?
-                <input type="number" v-model.number="newTodo.priority" placeholder="Priority"  /> 
-                <button @click="addTodo">Add</button>
+            </section>
+            <div>
+                <input class="add-todo-input input" type="text" placeholder="What todo?" v-model="newTodo.txt" @keyup.enter="addTodo" />
+                <label class="is-done-todo-container">
+                    <input class="is-done-todo-check" type="checkbox" v-model="newTodo.isDone"  />
+                    <span class="is-done-checkbox"></span>
+                </label>
+                  <input class="add-todo-priority input" type="number" v-model.number="newTodo.priority" placeholder="Priority"  /> 
+                <button class="add-todo-btn btn" @click="addTodo">Add</button>
             </div>
         </section>
 `,
