@@ -39,7 +39,6 @@ export default {
     },
     methods: {
         sendEmail(){
-            console.log(this.newEmail);
             let sentDate = new Date()
             this.newEmail.time = sentDate.toTimeString('he-IL');
             this.newEmail.date = sentDate.toLocaleDateString('he-IL');
@@ -49,10 +48,8 @@ export default {
         }
     },
     created() {
-        console.log(this.$route)
         if(this.$route.query.id) emailService.getById(this.$route.query.id)
         .then(emailData => {
-               console.log('data',emailData)
             this.newEmail.subject =`re:  ${emailData.subject}`;
             this.newEmail.emailAddress = emailData.emailAddress;
             this.newEmail.body =`
