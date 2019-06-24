@@ -54,9 +54,9 @@ export default {
         },
         videoType(){
             
-           if( !this.note.video.includes('youtube')) return true;
-           else if (this.note.video.indexOf('/watch') !== -1){
-           let idx = this.note.video.indexOf('/watch');
+            if( !this.note.video.includes('youtube')) return true;
+            let idx = this.note.video.indexOf('/watch');
+           if (idx !== -1){
            this.videoSrc = this.note.video.substring(0,idx) + '/embed/' + this.note.video.substring(idx + 9) ;
            return false;
            }
