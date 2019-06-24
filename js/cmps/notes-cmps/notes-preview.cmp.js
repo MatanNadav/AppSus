@@ -13,9 +13,18 @@ export default {
                 </section>
                 <note-todo v-if="note.type === 'todo'" :todos="note.todos"></note-todo>
                 <section v-if="note.type === 'video'">
-                <video controls>
-                  <source :src="note.video">
-                </video>
+                    <section v-if="videoType">
+                        <video controls>
+                            <source :src="note.video">
+                        </video>
+                    </section>
+                    <section v-else>
+                    <iframe width="200" height="150" 
+                    :src="videoSrc" 
+                    frameborder="0" 
+                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                     allowfullscreen></iframe>
+                    </section>
                 </section>
 
                 <div class="note-command flex space-between" @click.stop=""> 
@@ -33,6 +42,7 @@ export default {
 
     data() {
         return {
+            videoSrc
         }
     },
     props: ['note'],
@@ -42,6 +52,15 @@ export default {
             if (this.note.text.length > 25) return this.note.text.substring(0, 25) + '...'
             else return this.note.text
         },
+        videoType(){
+            
+           if( !this.note.video.includes('youtube')) return true;
+           else if (this.note.video.indexOf('/watch') !== -1){
+           let idx = this.note.video.indexOf('/watch');
+           this.videoSrc = this.note.video.substring(0,idx) + '/embed/' + this.note.video.substring(idx + 9) ;
+           return false;
+           }
+        }
 
     },
 
