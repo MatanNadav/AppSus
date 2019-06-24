@@ -36,10 +36,7 @@ function query() {
 }
 
 function sortPinnedNotes() {
-    console.log('inside sorting pinned');
-    
     notesDB.sort( note => (note.isPinned) ? -1 : 1)
-    console.log(notesDB);
     
 }
 

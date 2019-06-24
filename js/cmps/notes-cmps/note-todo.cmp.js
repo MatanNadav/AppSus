@@ -18,20 +18,6 @@ export default {
     },
     props:['todos'],
     methods: {
-        // addTodo(){
-        //     todoService.add(this.newTodo);
-        //     this.newTodo = todoService.getEmptyTodo();
-        //     console.log(this.todos);
-        // },
-        // toggleTodo(todo) {
-        //     console.log('TOGGLING TODO');
-        //     todoService.toggle(todo);
-        // },
-
-        // deleteTodo(todoIdx) {
-        //     // console.log('Ev', ev);
-        //     this.todos.splice(todoIdx, 1)
-        // },
         keyUp(ev) {
             if (ev.key === 'Enter') {
                 this.addTodo();

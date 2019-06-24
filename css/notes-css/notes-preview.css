@@ -93,7 +93,7 @@
 } 
 
 .color-input {
-    background: url('../img/svg/svg/linealcolor/39-art.svg');
+    background: url('../../img/svg/svg/linealcolor/39-art.svg');
     width: 1.7em;
     height: 1.7em;
 } 
@@ -103,7 +103,7 @@
 }
 
 .pinned-note {
-    background: url('../img/svg/svg/lineal/18-save-the post.svg');
+    background: url('../../img/svg/svg/lineal/18-save-the post.svg');
     border: none;
     width: 1.9em;
     height: 1.9em;;
@@ -113,10 +113,10 @@
 }
 
 .pinned-note.important {
-    background: url('../img/svg/svg/linealcolor/18-save-the-post.svg')
+    background: url('../../img/svg/svg/linealcolor/18-save-the-post.svg')
 }
 .remvove-note {
-    background: url('../img/svg/svg/lineal/48-trash.svg');
+    background: url('../../img/svg/svg/lineal/48-trash.svg');
     border: none;
     width: 1.9em;
     height: 1.9em;
@@ -126,7 +126,7 @@
 }
 
 .share-note {
-    background: url('../img/svg/svg/lineal/23-globe.svg');
+    background: url('../../img/svg/svg/lineal/23-globe.svg');
     width: 1.9em;
     height: 1.9em;
     border: none;

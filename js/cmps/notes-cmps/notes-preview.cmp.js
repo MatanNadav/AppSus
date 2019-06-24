@@ -73,14 +73,12 @@ export default {
             let file = this.note.img
             let reader = new FileReader();
             reader.onload = function (ev) {
-                console.log(image);
                 image.src = ev.target.result;
             }
             reader.readAsDataURL(file);
         },
 
         changeColor(ev) {
-            console.log('inside change color', this.note.bgColor);
             this.note.bgColor = "background-color:" + ev.target.value
             this.emitNoteOnBus('update-note')
             return this.note.bgColor

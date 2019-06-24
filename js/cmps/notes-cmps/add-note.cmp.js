@@ -61,7 +61,6 @@ export default {
 
         submitNote() {
             this.newNote.type = this.noteType;
-            console.log('note addded', this.newNote)
             this.$emit('add-note', this.newNote)
 
         },

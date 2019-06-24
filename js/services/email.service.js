@@ -123,7 +123,6 @@ function createRandomResponse(email) {
         'please verify your email', 'You go queen', 'I will get back to you on that'
         , 'You really wearing that ?', 'Damm girl', 'BuhBye', 'SHUT THE FK UP']
     let responseTime = new Date(Date.now());
-    console.log(email.emailAddress)
     let response = {
         id: utilService.getRandomString(6),
         subject: 're: ' + email.subject,

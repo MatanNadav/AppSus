@@ -46,7 +46,6 @@ export default {
     },
 
     created() {
-        console.log('inside edit', this.selectedNote);
         this.title = this.selectedNote.title;
         
     }
