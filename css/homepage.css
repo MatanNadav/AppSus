@@ -64,4 +64,11 @@
 
 .home-preview-container{
   display: flex;
+  flex-direction: column;
+}
+@media(min-width:600px){
+  .home-preview-container{
+    flex-direction: row;
+  }
+
 }
