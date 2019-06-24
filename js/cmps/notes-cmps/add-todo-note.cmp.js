@@ -2,11 +2,11 @@
 export default {
     template: `
        <section class="add-todo-container flex">
-            <section  v-if="todos.length" >
+            <section class="todo-command-container"  v-if="todos.length" >
                 <div v-for="(todo,idx) in todos">
-                   <button class="edit-todo-btn btn" @click="editTodo(idx)">edit</button> 
+                   <button class="edit-todo-btn" @click="editTodo(idx)">edit</button> 
                    <span :class="{'todo-done' : todo.isDone}" @click="toggleTodo(idx)">{{todo.txt}}</span> 
-                   <button class="remove-todo-btn btn" @click="deleteTodo(idx)">X</button>
+                   <button class="remove-todo-btn" @click="deleteTodo(idx)">X</button>
                 </div>
             </section>
             <div>
@@ -16,7 +16,7 @@ export default {
                     <span class="is-done-checkbox"></span>
                 </label>
                   <input class="add-todo-priority input" type="number" v-model.number="newTodo.priority" placeholder="Priority"  /> 
-                <button class="add-todo-btn btn" @click="addTodo">Add</button>
+                <button class="add-todo-btn" @click="addTodo">Add todo</button>
             </div>
         </section>
 `,

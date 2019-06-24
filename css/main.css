@@ -1,20 +1,21 @@
 
 @import'./app-header.css';
 @import'./homepage.css';
-@import'./notes-app.css';
-@import './notes-list.css';
-@import './todo.css';
-@import './notes-preview.css';
-@import './notes-filter.css';
-@import './notes-edit.css';
-@import './add-note.css';
-@import './email-app.css';
-@import './email-filter.css';
-@import './email-nav.css';
-@import './email-list.css';
-@import './email-preview.css';
-@import './email-details.css';
-@import './email-compose.css';
+@import'./about.css';
+@import'./notes-css/notes-app.css';
+@import './notes-css/notes-list.css';
+@import './notes-css/add-todo-note.css';
+@import './notes-css/notes-preview.css';
+@import './notes-css/notes-filter.css';
+@import './notes-css/notes-edit.css';
+@import './notes-css/add-note.css';
+@import './email-css/email-app.css';
+@import './email-css/email-filter.css';
+@import './email-css/email-nav.css';
+@import './email-css/email-list.css';
+@import './email-css/email-preview.css';
+@import './email-css/email-details.css';
+@import './email-css/email-compose.css';
 
 
 /* fonts */
@@ -109,3 +110,4 @@ input:focus {
 .wrap {
     flex-wrap: wrap;
 }
+
