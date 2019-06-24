@@ -121,7 +121,8 @@ function toggleStarred(id) {
 function createRandomResponse(email) {
     let responseDB = ['Got it', 'im on it', 'Nice to meet you', 'Unsubcribe', 'GOD DAMM STOP SPAMMING ME ',
         'please verify your email', 'You go queen', 'I will get back to you on that'
-        , 'You really wearing that ?', 'Damm girl', 'BuhBye', 'SHUT THE FK UP']
+        , 'You really wearing that ?', 'Damm girl', 'BuhBye', 'SHUT THE FK UP','נעים לי','Dayyymmmm Girl',
+    'Dayyyym BOOOI']
     let responseTime = new Date(Date.now());
     console.log(email.emailAddress)
     let response = {
