@@ -83,9 +83,12 @@
 }
 
 
-.add-note-radio-btn-container {
-    position: relative;
-    bottom: -33%;
+.add-note-btns-container {
+    position: absolute;
+    bottom: 7%;
+    left: 50%;
+    transform: translateX(-50%);
+
 }
 .add-note-radio-btn {
     height: 25px;

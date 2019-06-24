@@ -19,12 +19,12 @@ export default {
           <section v-if="noteType === 'video'">
             <input class="add-note-video-url input" type="url" placeholder="Video url" v-model="newNote.video"/>
           </section>
-          <div class="add-note-radio-btn-container">
+          <div class="add-note-btns-container">
               <input class="add-note-radio-btn" type="radio" name="note-type" value="text" v-model="noteType" >
               <input class="add-note-radio-btn" type="radio" name="note-type" value="todo" v-model="noteType" >
               <input class="add-note-radio-btn" type="radio" name="note-type" value="video" v-model="noteType" >
+              <button class="submit-note" @click="submitNote" >Save</button>
         </div>
-        <button class="submit-note" @click="submitNote" >Save</button>
     </section>
     `,
 
