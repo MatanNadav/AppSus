@@ -10,7 +10,7 @@ export default {
         <section class="email-app">
             <email-filter @email-filter="setFilter"></email-filter>
             <section class="email-body-container flex">
-                <email-nav @open-nav="onOpenNav" @page-select="setPageFilter"></email-nav>
+                <email-nav @open-nav="onOpenNav" @page-select="setPageFilter" :unread-precentage="unreadPrecentage"></email-nav>
                 <email-list v-if="emailsToShow" :emails="emailsToShow" ></email-list>
             </section>
             <button class="email-compose-btn" @click="moveToComposePage" 
@@ -29,7 +29,8 @@ export default {
             pageNumber: 0,
             emailsPerPage: 10,
             filter: null,
-            isNavOpen: false
+            isNavOpen: false,
+            unreadPrecentage:0,
         }
     },
 
@@ -90,6 +91,10 @@ export default {
         eventBus.$on('on-delete-email', this.onEmailDelete)
         eventBus.$on('toggle-read', this.onToggleRead)
         eventBus.$on('toggle-star', this.onToggleStar)
+        emailService.getUnreadPrecentage().then(precentage => {
+            console.log(precentage)
+            this.unreadPrecentage = precentage
+        })
 
     },
     beforeDestroy() {

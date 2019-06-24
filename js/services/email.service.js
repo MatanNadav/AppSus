@@ -5,14 +5,15 @@ import utilService from './util.service.js';
 
 const MAIL_KEY = 'emails'
 let gSort;
-
+let gCount = 0;
 export const emailService = {
     query,
     add,
     getById,
     remove,
     toggleRead,
-    toggleStarred
+    toggleStarred,
+    getUnreadPrecentage
 
 }
 
@@ -51,16 +52,16 @@ function query(filter, page, emailsPerPage, pageNumber) {
     return Promise.resolve(emailsToShow.slice());
 }
 function sortEmails(sort) {
-    if(sort === gSort) return;
-     gSort = sort;
+    if (sort === gSort) return;
+    gSort = sort;
     if (!sort || sort === 'date') {
         emailsDB.sort((email1, email2) => {
             let date1 = email1.date.split('.');
             let date2 = email2.date.split('.');
             if (email1.date !== email2.date) {
                 if (date1[2] !== date2[2]) return (date1[2] < date2[2]) ? 1 : -1
-              else  if (date1[1] !== date2[1]) return (date1[1] < date2[1]) ? 1 : -1
-               else  return (date1[0] < date2[0]) ? 1 : -1;
+                else if (date1[1] !== date2[1]) return (date1[1] < date2[1]) ? 1 : -1
+                else return (date1[0] < date2[0]) ? 1 : -1;
             } else return (email1.time < email2.time) ? 1 : -1
         })
     } else {
@@ -102,6 +103,7 @@ function remove(id) {
 
 function toggleRead(id) {
     getById(id).then(email => {
+        (email.isRead) ? gCount++ : gCount--;
         email.isRead = !email.isRead;
         storageService.store(MAIL_KEY, emailsDB);
     }
@@ -140,4 +142,14 @@ ${email.body}
     };
     emailsDB.unshift(response);
 
+}
+
+function getUnreadPrecentage() {
+    if (!gCount) {
+        emailsDB.forEach(email => {
+            if (!email.isRead) gCount++;
+        });
+    }
+    let precentge = Math.floor((gCount / emailsDB.length) *100);
+    return Promise.resolve(precentge);
 }
