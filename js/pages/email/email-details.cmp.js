@@ -4,15 +4,20 @@ import { emailService } from '../../services/email.service.js';
 import eventBus from '../../event-bus.js'
 export default {
     template: `
-      <section class="email-details-container" v-if="emailData">
-          <h1>{{emailData.subject}}</h1>
-          <h6>{{emailDirection}} {{emailData.firstName}} {{emailData.lastName}} {{emailData.emailAddress}}
-           At : {{emailData.date}} {{emailData.time}}</h6>
-          <pre>{{emailData.body}}</pre>
-          <div class="email-details-btn-container flex">
+      <section class="email-details-container flex" v-if="emailData">
+        <div class="email-details-btn-container">
             <button class="email-details-reply btn" @click="moveToCompose">reply</button>
             <button class="email-details-delete btn" @click="onEmailDelete">Delete</button>
-          </div>
+        </div>
+
+          <h1 class="email-subject-header"><span class="email-details-subject">Subject:</span> {{emailData.subject}}</h1>
+
+          <h4 class="email-info-header"><span class="email-details-direction">{{emailDirection}}</span>
+          {{emailData.firstName}} {{emailData.lastName}} --  {{emailData.emailAddress}}
+           <span class="email-details-date">{{emailData.date}} {{emailData.time}}</span></h4>
+           
+          <pre  class="email-body-parag">{{emailData.body}}</pre>
+         
       </section>
     `,
 
@@ -25,7 +30,7 @@ export default {
     props: [],
     computed: {
         emailDirection(){
-            return (this.emailData.isSent)? 'To' : 'From';
+            return (this.emailData.isSent)? 'To:' : 'From:';
         },
         
 

@@ -2,9 +2,24 @@
 
 .email-nav-container {
     width: 14em;
-    text-align: center;
-}
+    text-align: center;}
+    @media (max-width: 740px) {
+        .email-nav-container {
+            position: fixed;
+            left: -250px;
+        }
+    }
 
+.email-nav-container.open {
+    background: linear-gradient(70deg, #d65a31,#393e46);
+    position: fixed;
+    height: 100vh;
+    padding: 180px 0;
+    top: 0;
+    left: 0;
+    transition: 0.3s
+
+}
 .email-nav-item {
     color: #222831;
     padding: 1em;
@@ -22,3 +37,18 @@
     border: 2px solid #222831;
     box-shadow: 5px 5px 7px rgba(33,33,33,.7);
 }
+
+.responsive-btn {
+    position: absolute;
+    left: -250px;
+    height: 30px;
+    width: 30px;
+}
+    @media (max-width: 740px) {
+        .responsive-btn {
+            position: fixed;
+            left: 1em;
+            top: 11em;
+            background: url('../img/svg/svg/lineal/63-menu.svg');
+        }
+    }

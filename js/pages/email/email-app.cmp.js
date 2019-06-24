@@ -10,10 +10,11 @@ export default {
         <section class="email-app">
             <email-filter @email-filter="setFilter"></email-filter>
             <section class="email-body-container flex">
-                <email-nav @page-select="setPageFilter"></email-nav>
+                <email-nav @open-nav="onOpenNav" @page-select="setPageFilter"></email-nav>
                 <email-list v-if="emailsToShow" :emails="emailsToShow" ></email-list>
             </section>
-            <button class="email-compose-btn" @click="moveToComposePage">Compose</button>
+            <button class="email-compose-btn" @click="moveToComposePage" 
+                    :class="{reveal :isNavOpen}" >Compose</button>
             <div class="email-page-navigation-btn-container">
                 <button class="email-prev-page btn" v-if="pageNumber > 0" @click="movePage(-1)"><</button> 
                 <button class="email-next-page btn" v-if="emailsToShow && emailsToShow.length === emailsPerPage" @click="movePage(1)">></button>
@@ -27,7 +28,8 @@ export default {
             selectedPage: 'inbox',
             pageNumber: 0,
             emailsPerPage: 10,
-            filter: null
+            filter: null,
+            isNavOpen: false
         }
     },
 
@@ -68,6 +70,11 @@ export default {
         onToggleStar(id) {
             emailService.toggleStarred(id)
                 .then(() => this.getEmailsToShow())
+        },
+        onOpenNav() {
+            console.log('are we in?');
+            
+            this.isNavOpen = !isNavOpen;
         }
     },
     components: {

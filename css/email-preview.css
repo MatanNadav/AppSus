@@ -10,8 +10,13 @@
         color: #393e46;
         height: 3em;
         padding: 1em 0;
-        cursor: pointer;
-}
+        cursor: pointer;}
+        @media (max-width: 740px) {
+            .email-preview-container {
+               height: 1.2em;
+               padding: 5px 0
+            }
+        }
 .email-preview-container.opened{
     font-family: Muli;
 }
@@ -21,7 +26,10 @@
 }
 
 .email-text-container {
-    width: 100%
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis
+
 }
 .email-text-container .email-date {
     margin-right: 1em

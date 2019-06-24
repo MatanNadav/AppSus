@@ -17,8 +17,12 @@
     color: #eeeeee;
     font-size: 25px;
     padding: 5px 20px;
-    text-decoration: none;
-}
+    text-decoration: none;}
+    @media (max-width: 740px) {
+        .email-compose-btn {
+           left: -250px; 
+        }
+    }
   
 .email-compose-btn:hover {
     background-image: linear-gradient(to bottom, #393e46, #222831);
@@ -26,6 +30,9 @@
     cursor: pointer;
 }
 
+.email-compose-btn.reveal {
+    left: 50px;
+}
 
 /* Navigation Button Container */
 .email-page-navigation-btn-container {
@@ -36,6 +43,6 @@
     left: 4%}
     @media (max-width: 740px) {
         .email-page-navigation-btn-container {
-            flex-direction: column;
+            left: -250px
         }
     }

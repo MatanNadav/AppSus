@@ -25,7 +25,7 @@ export default {
     props:['email'],
     computed: {
       textRender() {
-        if (this.email.subject.length > 25) return this.email.subject.substring(0, 55) + '...'
+        if (this.email.subject.length > 55) return this.email.subject.substring(0, 55) + '...'
         else return this.email.subject
     },
     },

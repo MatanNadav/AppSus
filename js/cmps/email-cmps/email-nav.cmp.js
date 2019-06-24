@@ -2,7 +2,8 @@
 
 export default {
     template: `
-    <section  class="email-nav-container">
+    <section  class="email-nav-container" :class="{open : isOpen}">
+        <button class="responsive-btn" @click="openNav"></button>
         <nav>
             <ul class="email-nav-items-container">
                 <li class="email-nav-item" @click="changePage('inbox')">Inbox</li>
@@ -16,7 +17,7 @@ export default {
 
     data() {
         return {
-
+            isOpen: false
         }
     },
 
@@ -28,6 +29,10 @@ export default {
     methods: {
           changePage(selectedPage){
              this.$emit('page-select',selectedPage)
+          },
+          openNav() {
+              this.isOpen = !this.isOpen
+              this.$emit('open-nav')
           }
     },
 
