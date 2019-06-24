@@ -16,7 +16,7 @@ export default {
                     <span class="is-done-checkbox"></span>
                 </label>
                   <input class="add-todo-priority input" type="number" v-model.number="newTodo.priority" placeholder="Priority"  /> 
-                <button class="add-todo-btn btn" @click="addTodo">Add</button>
+                <button class="add-todo-btn" @click="addTodo">Add todo</button>
             </div>
         </section>
 `,

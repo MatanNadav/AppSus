@@ -26,9 +26,16 @@
 }
 
 .add-todo-btn {
-    display: block;
-    width: 70px;
-    margin: 10px auto
+    position: absolute;
+    top: 0;
+    right: 2vw;
+    background: #393e46;
+    background-image: linear-gradient(to bottom, #222831, #393e46);
+    border-radius: 28px;
+    box-shadow: 0px 1px 3px #171317;
+    color: #eeeeee;
+    padding: 5px 5px;
+    text-decoration: none;
 }
 
 

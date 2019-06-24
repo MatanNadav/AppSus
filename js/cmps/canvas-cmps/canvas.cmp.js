@@ -8,11 +8,8 @@ import canvasControls from "./canvas-controls.cmp.js";
 export default {
     template: `
     <section class="canvas-proj-container">
-        <canvas-controls @status-change="updateStatus"></canvas-controls>
         <section class="canvas-container">
-    <section style="background-color:white;">
-     <canvas-controls @clear="clear" @status-change="updateStatus"></canvas-controls>
-        <section class="container">
+                <canvas-controls @clear="clear" @status-change="updateStatus"></canvas-controls>
             <canvas ref="canvas" class="canvas"  height="300" @mousedown="onCanvasClick"
             @mousemove="onCanvasHoverMovement" @mouseup="onCanvasRelease"
             ></canvas>
@@ -124,12 +121,7 @@ export default {
     mounted() {
         this.canvas = this.$refs.canvas,
             this.ctx = this.$refs.canvas.getContext('2d');
-<<<<<<< HEAD
             this.ctx.canvas.width = window.innerWidth / 2;
-=======
-            this.ctx.canvas.width = window.innerWidth;
-            
->>>>>>> 18dde1fc3adb02335f20ddb97005d536fb026f99
     },
     components:{
         canvasControls

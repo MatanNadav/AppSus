@@ -3,7 +3,7 @@
 export default {
     template: `
      <section @mouseup="mouseUpControls" class="canvas-control flex space-between">
-         <button @click="clear">Clear</button>
+         <button class="clear-canvas-btn" @click="clear">Clear</button>
         <input @change="onChangeColor"   type="color" class="color-brush" v-model="PaintStatus.strokeColor" >
         <section class="flex">
         <button class="random-canvas-color-btn" @click="toggleRainbowMode">Random</button>

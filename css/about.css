@@ -12,13 +12,13 @@
     width: 50%
 }
 
-.random-canvas-color-btn, .psyco-canvas-color-btn {
+.random-canvas-color-btn, .psyco-canvas-color-btn, .clear-canvas-btn {
     background: #393e46;
     background-image: linear-gradient(to bottom, #222831, #393e46);
     border-radius: 28px;
     box-shadow: 0px 1px 3px #171317;
     color: #eeeeee;
-    padding: 5px 20px;
+    padding: 5px 5px;
     text-decoration: none;
 }
 
@@ -27,6 +27,5 @@
     border-radius: 28px;
     box-shadow: 0px 1px 3px #171317;
     color: #eeeeee;
-    padding: 5px 20px;
     text-decoration: none;
 }
