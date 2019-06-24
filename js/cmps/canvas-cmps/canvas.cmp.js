@@ -42,7 +42,7 @@ export default {
         },
 
         onCanvasHoverMovement(ev) {
-            if (this.PaintStatus.isMouseDown) {
+            if (this.PaintStatus.isMouseDown && ev.buttons == 1) {
                 this.PaintStatus.isMouseDown = false;
                 this.PaintStatus.timeout = setTimeout(this.onCanvasClick, this.PaintStatus.shapeDelay);
                 this.ctx.save()
@@ -95,10 +95,6 @@ export default {
         },
      
 
-
-        // changeElement(val) {
-        //     this.PaintStatus.currElement = val;
-        // }
 
 
         drawRect(x, y) {

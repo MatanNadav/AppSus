@@ -46,7 +46,7 @@ export default {
             this.PaintStatus.isPsych = !this.PaintStatus.isPsych;
         },
       
-        onChangeColor(ev) {
+        onChangeColor() {
             this.PaintStatus.isRainbow = this.PaintStatus.isPsych = false;
         },
         mouseUpControls() {
