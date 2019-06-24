@@ -61,3 +61,7 @@
       rotateZ(0deg)
       skew(0deg,22deg);
 }
+
+.home-preview-container{
+  display: flex;
+}
