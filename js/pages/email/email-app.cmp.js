@@ -92,7 +92,6 @@ export default {
         eventBus.$on('toggle-read', this.onToggleRead)
         eventBus.$on('toggle-star', this.onToggleStar)
         emailService.getUnreadPrecentage().then(precentage => {
-            console.log(precentage)
             this.unreadPrecentage = precentage
         })
 

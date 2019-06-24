@@ -9,7 +9,6 @@ export default {
     <form class="email-compose-form-container"action="">
     <input class="email-subjet-input input" type="text" placeholder="subject" v-model="newEmail.subject">
     <input class="email-recipient-input input" type="email" placeholder="To" v-model="newEmail.emailAddress">
-    <!-- <hr> -->
     <textarea class="email-body-input" name="" v-model="newEmail.body" cols="100" rows="40" placeholder="Email body"></textarea>
     <button class="email-send-btn btn" >Send</button>
     </form>
